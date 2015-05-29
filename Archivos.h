@@ -134,9 +134,8 @@ class Archivos{
         }
         fclose(Articulos);
     }
-    public: void editar(int code){
+    public: void editar(Articulo art, int code){
         FILE* Articulos = fopen("Articulos.dat","rb");
-        Articulo art;
         if(Articulos==NULL) {
             system("cls");
             cout<<"\n No se han cargado articulos";
