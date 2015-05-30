@@ -4,3 +4,8 @@
 
 
 #endif // ARTICULOS_H_INCLUDED
+class Articulos{
+
+    private: char* name;
+
+};
