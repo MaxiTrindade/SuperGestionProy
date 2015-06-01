@@ -15,7 +15,15 @@ class Imprimir{
             cout<<" STOCK: ";   if(num == 5) return;
         }
 
-        void textoCargaCli(int cod, int loc, char nom[20], char ape[20], char dire[20]){
+        void textoCargaCli(int cod, int loc, char nom[20], char ape[20], char dire[20],int num){
+            system("cls");
+            cout<<"\n CARGAR CLIENTE: (Volver: Ingrese -1)\n";
+            cout<<" ---------------\n\n";
+            cout<<" CODIGO: ";  if(num == 1) return; cout<<cod<<endl;
+            cout<<" NOMBRE: ";  if(num == 2) return; cout<<nom<<endl;
+            cout<<" APELLIDO: "; if(num == 3) return; cout<<ape<<endl;
+            cout<<" DIRECCION: "; if(num == 4) return; cout<<dire<<endl;
+            cout<<" LOCALIDAD: "; if(num == 5) return;
         }
 
         void textoNoPositivo(){
