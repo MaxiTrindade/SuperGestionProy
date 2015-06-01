@@ -32,6 +32,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Headers/Articulos.h" />
+		<Unit filename="Headers/Imprimir.h" />
+		<Unit filename="Headers/Validacion.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

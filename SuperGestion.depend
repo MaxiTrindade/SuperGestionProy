@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1433177212 source:c:\users\maximiliano\documents\github\supergestionproy\main.cpp
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<ctime>
+	"Headers/Imprimir.h"
+	"Headers/Validacion.h"
+	"Headers/Articulos.h"
+
+1433172488 c:\users\maximiliano\documents\github\supergestionproy\headers\articulos.h
+
+1433172488 c:\users\maximiliano\documents\github\supergestionproy\headers\validacion.h
+
+1433172488 c:\users\maximiliano\documents\github\supergestionproy\headers\imprimir.h
+
