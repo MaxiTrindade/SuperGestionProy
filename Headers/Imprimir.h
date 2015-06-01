@@ -14,11 +14,16 @@ class Imprimir{
             cout<<" PRECIO: $"; if(num == 4) return; cout<<pre<<endl;
             cout<<" STOCK: ";   if(num == 5) return;
         }
+
+        void textoCargaCli(int cod, int loc, char nom[20], char ape[20], char dire[20]){
+        }
+
         void textoNoPositivo(){
             system("cls");
             cout<<"\n El numero ingresado es invalido.\n Se requiere de un valor positivo\n\n ";
             system("pause");
         }
+
         void textoRangoInvalido(int minimo, int maximo){
             system("cls");
             cout<<"\n El valor ingresado es incorrecto.\n Se admiten valores entre "<<minimo<<" y "<<maximo<<"\n\n ";
