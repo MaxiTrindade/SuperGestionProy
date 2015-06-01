@@ -12,4 +12,7 @@ using namespace std;
 int main(){
     Articulo* ART = new Articulo();
     ART->cargar();
+    
+    
+    /// PROBANDO SI SE PUEDE MODIFICAR SOLO UNA PARTE DE CADA HEADER, MANUALMENTE
 }
