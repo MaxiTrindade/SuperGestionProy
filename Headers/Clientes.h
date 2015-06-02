@@ -89,18 +89,11 @@ class Clientes{
             while(reintentar){
                 cin>>localidad;
                 if(validar->Regresar(localidad)) return;
-                if(validar->Positivo(localidad)){
-                    if(validar->Rango(localidad,1,20)) reintentar = false;
-                    else{
-                        Mostrar->textoRangoInvalido(1,20);
-                        Mostrar->textoCargaCli(codCli,localidad,nombre,apellido,dire,5);
-                    }
-                }
+                if(validar->Rango(localidad,1,20)) reintentar = false;
                 else{
-                    Mostrar->textoNoPositivo();
+                    Mostrar->textoRangoInvalido(1,20);
                     Mostrar->textoCargaCli(codCli,localidad,nombre,apellido,dire,5);
                 }
-
             }
 
 
