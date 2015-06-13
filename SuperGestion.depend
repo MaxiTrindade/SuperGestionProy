@@ -73,13 +73,14 @@
 
 1433901970 c:\users\maximiliano\documents\github\supergestionproy\headers\empleados.h
 
-1433984544 source:c:\users\ramiro\desktop\supergestionproy\main.cpp
+1434223683 source:c:\users\ramiro\desktop\supergestionproy\main.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
 	<cstring>
 	<ctime>
 	<conio.h>
+	<windows.h>
 	"Headers/Super.h"
 	"Headers/Imprimir.h"
 	"Headers/Validacion.h"
@@ -89,27 +90,30 @@
 	"Headers/Clientes.h"
 	"Headers/Ventas.h"
 	"Headers/Archivos.h"
+	"Headers/Usuarios.h"
 	"Headers/Menues.h"
 
-1433984544 c:\users\ramiro\desktop\supergestionproy\headers\super.h
+1434227735 c:\users\ramiro\desktop\supergestionproy\headers\super.h
 
-1433974516 c:\users\ramiro\desktop\supergestionproy\headers\imprimir.h
+1434225538 c:\users\ramiro\desktop\supergestionproy\headers\imprimir.h
 
-1433983445 c:\users\ramiro\desktop\supergestionproy\headers\validacion.h
+1434216124 c:\users\ramiro\desktop\supergestionproy\headers\validacion.h
 
-1433983382 c:\users\ramiro\desktop\supergestionproy\headers\fecha.h
+1434216124 c:\users\ramiro\desktop\supergestionproy\headers\fecha.h
 
-1433901460 c:\users\ramiro\desktop\supergestionproy\headers\articulos.h
+1434216124 c:\users\ramiro\desktop\supergestionproy\headers\articulos.h
 
-1433901970 c:\users\ramiro\desktop\supergestionproy\headers\empleados.h
+1434216124 c:\users\ramiro\desktop\supergestionproy\headers\empleados.h
 
-1433901638 c:\users\ramiro\desktop\supergestionproy\headers\clientes.h
+1434216124 c:\users\ramiro\desktop\supergestionproy\headers\clientes.h
 
-1433985459 c:\users\ramiro\desktop\supergestionproy\headers\ventas.h
+1434216124 c:\users\ramiro\desktop\supergestionproy\headers\ventas.h
 
-1433985469 c:\users\ramiro\desktop\supergestionproy\headers\archivos.h
+1434226214 c:\users\ramiro\desktop\supergestionproy\headers\archivos.h
 
-1433984670 c:\users\ramiro\desktop\supergestionproy\headers\menues.h
+1434227340 c:\users\ramiro\desktop\supergestionproy\headers\menues.h
 
 1433901970 c:\users\backup_labs\desktop\supergestionproy\headers\empleados.h
+
+1434228558 c:\users\ramiro\desktop\supergestionproy\headers\usuarios.h
 

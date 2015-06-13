@@ -24,7 +24,7 @@ int main(){
     presentacion();
     system("COLOR 1C");
     Usuario* User = new Usuario();
-    User->login();
-    menuPrincipal();
+    User=User->login();
+    menuPrincipal(User);
     return 0;
 }

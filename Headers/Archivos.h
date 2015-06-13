@@ -53,7 +53,7 @@ void Archivo::guardar(void* objeto,int num){   //// EN ESTA FUNCION SE HAN COMEN
             fwrite(venta,sizeof (Venta),1,archivo);
         }
             break;
-/*
+
         case usua:
         {
             Usuario* usuario = (Usuario*)objeto;
@@ -61,7 +61,7 @@ void Archivo::guardar(void* objeto,int num){   //// EN ESTA FUNCION SE HAN COMEN
             fwrite(usuario,sizeof (Usuario),1,archivo);
         }
             break;
-
+/*
         case prom:
         {
             Promo* promo = (Promo*)objeto;
@@ -142,6 +142,18 @@ void Archivo::listarTodos(int num){
             system("pause");
         }
             break;
+
+            case usua:{
+            Usuario* user = new Usuario();
+            archivo = fopen("Usuarios.dat","rb");
+            while(fread(user,sizeof (Usuario),1,archivo)){
+
+                if(user->getEstado() == true){
+                    mostrar->usuario(user);
+                }
+            }
+            system("pause");
+        }
     }
     fclose(archivo);
 }
@@ -289,7 +301,7 @@ void Archivo::eliminar(int num){
         }
             break;
 
-            case empl:{
+        case empl:{
             Empleado* empleado = new Empleado();
             archivo = fopen("Empleados.dat","rb+");
             while(fread(empleado,sizeof (Empleado),1,archivo)){
@@ -305,7 +317,6 @@ void Archivo::eliminar(int num){
             }
         }
             break;
-
     }
 }
 
@@ -378,7 +389,6 @@ bool Archivo::comprobarRegistro(int num,int codigo){
         }
             break;
     }
-
     return false;
 }
 

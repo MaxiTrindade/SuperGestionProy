@@ -5,6 +5,7 @@ void menuVenta(); /// LO ARMÉ ASÍ PORQUE CREO QUE RESULTA MÁS CÓMODO Y ORDENADO 
 void menuArticulo();
 void menuClientes();
 void menuEmpleados();
+void menuUsuarios(Usuario*);
 
 void presentacion(){
     cout<<"\n\n";
@@ -27,7 +28,7 @@ void presentacion(){
     system("pause");
 }
 
-void menuPrincipal(){
+void menuPrincipal(Usuario* User){
     char opc='1';
 
     while(opc!='S' or opc!= 's'){
@@ -62,7 +63,8 @@ void menuPrincipal(){
             case 'E': case 'e':
             case 'F': case 'f':
             case 'G': case 'g':
-            case 'H': case 'h':
+            case 'H': case 'h':   menuUsuarios(User);
+                break;
             case 'I': case 'i':
             case 'J': case 'j': {
                 system("cls"); cout<<"\n MENU DISPONIBLE SOLO EN LA VERSION COMPLETA...\n\n ";
@@ -81,7 +83,6 @@ void menuArticulo(){
     char opc='1';
     Articulo* art = new Articulo();
     Archivo * archivo = new Archivo();
-
 
     while(opc!='0'){
         system("CLS");
@@ -242,6 +243,50 @@ void menuVenta(){
             case '0':
                 break;
             default:
+                break;
+        }
+    }
+}
+
+void menuUsuarios(Usuario* User){
+
+    char opc='1';
+    Archivo* archivo = new Archivo();
+
+    if(strcmp(User->getNombre(),"INVITADO") ==0 or User->getEstado() == false){
+        system("cls");
+        cout << "\n ACCESO DENEGADO " << endl;
+        cout << "\n No tiene los permisos necesarios para ingresar a este submenu " << endl << endl;
+        system("pause");
+        return;
+    }
+
+    while(opc!='S' and opc != 's'){
+        system("cls");
+        cout<<"\n USUARIO: " << User->getNombre() << endl;
+        cout<<" --------------------"<<endl;
+        cout<<" 1 - AGREGAR USUARIOS"<<endl;
+        cout<<" 2 - LISTAR USUARIOS"<<endl;
+        cout<<" 3 - CAMBIAR CLAVE"<<endl;
+        cout<<" 4 - ELIMINAR USUARIO"<<endl;
+        cout<<" --------------------"<<endl;
+        cout<<" S - VOLVER AL MENU PRINCIPAL\n";
+        opc=getch();
+        switch(opc){
+            case '1': if(User->cargar())
+                        archivo->guardar(User,usua);
+                break;
+            case '2': archivo->listarTodos(usua);
+                break;
+            case '3': User->cambiarClave();
+                break;
+            case '4': User->eliminar();
+                break;
+            case '0':
+                break;
+            case 'S': case 's': return;
+            default: cout << "\n La opcion ingresada es incorrecta. \n\n ";
+                system("pause");
                 break;
         }
     }

@@ -119,6 +119,11 @@ class Imprimir{
             cout<<"SUELDO: "<<obj->getSueldo()<<endl;
             cout<<"---------------------------"<<endl;
         }
+
+        void usuario(Usuario *obj){
+            cout<<"NOMBRE: "<<obj->getNombre()<<endl;
+            cout<<"---------------------------"<<endl;
+        }
 };
 
 void gotoxy(int x,int y){

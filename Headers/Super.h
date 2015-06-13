@@ -184,18 +184,20 @@ class Usuario{
 
     private:
         char nombre[20],clave[20];
-        Fecha fechaUsuario;
         bool estado;
-
     public:
         char* getNombre();
         char* getClave();
         bool getEstado();
-        void setNombre(char nombre[20]);
-        void setClave(char clave[20]);
+        void setNombre(char* nombre);
+        void setClave(char* clave);
         void setEstado(bool estado);
-        void login();
+        bool cargar();
+        Usuario* login();
         void cambiarClave();
+        bool comprobarUsuario(char* nombre);
+        bool comprobarClave(char* nombre, char* clave);
+        void eliminar();
 };
 
 
