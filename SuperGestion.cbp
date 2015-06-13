@@ -32,9 +32,16 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Headers/Archivos.h" />
 		<Unit filename="Headers/Articulos.h" />
+		<Unit filename="Headers/Clientes.h" />
+		<Unit filename="Headers/Empleados.h" />
+		<Unit filename="Headers/Fecha.h" />
 		<Unit filename="Headers/Imprimir.h" />
+		<Unit filename="Headers/Menues.h" />
+		<Unit filename="Headers/Super.h" />
 		<Unit filename="Headers/Validacion.h" />
+		<Unit filename="Headers/Ventas.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

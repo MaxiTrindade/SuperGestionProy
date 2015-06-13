@@ -1,17 +1,115 @@
 # depslib dependency file v1.0
-1433177212 source:c:\users\maximiliano\documents\github\supergestionproy\main.cpp
+1434024287 source:c:\users\maximiliano\documents\github\supergestionproy\main.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
 	<cstring>
 	<ctime>
+	<conio.h>
+	"Headers/Super.h"
 	"Headers/Imprimir.h"
 	"Headers/Validacion.h"
+	"Headers/Fecha.h"
 	"Headers/Articulos.h"
+	"Headers/Empleados.h"
+	"Headers/Clientes.h"
+	"Headers/Ventas.h"
+	"Headers/Archivos.h"
+	"Headers/Menues.h"
 
-1433172488 c:\users\maximiliano\documents\github\supergestionproy\headers\articulos.h
+1434035667 c:\users\maximiliano\documents\github\supergestionproy\headers\articulos.h
 
-1433172488 c:\users\maximiliano\documents\github\supergestionproy\headers\validacion.h
+1433983445 c:\users\maximiliano\documents\github\supergestionproy\headers\validacion.h
 
-1433172488 c:\users\maximiliano\documents\github\supergestionproy\headers\imprimir.h
+1434035667 c:\users\maximiliano\documents\github\supergestionproy\headers\imprimir.h
+
+1433901638 c:\users\maximiliano\documents\github\supergestionproy\headers\clientes.h
+
+1434035510 c:\users\maximiliano\documents\github\supergestionproy\headers\menues.h
+
+1434033898 c:\users\maximiliano\documents\github\supergestionproy\headers\ventas.h
+
+1434034932 c:\users\maximiliano\documents\github\supergestionproy\headers\super.h
+
+1434035484 c:\users\maximiliano\documents\github\supergestionproy\headers\archivos.h
+
+1433983382 c:\users\maximiliano\documents\github\supergestionproy\headers\fecha.h
+
+1434024287 source:c:\users\backup_labs\desktop\supergestionproy\main.cpp
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<ctime>
+	<conio.h>
+	"Headers/Super.h"
+	"Headers/Imprimir.h"
+	"Headers/Validacion.h"
+	"Headers/Fecha.h"
+	"Headers/Articulos.h"
+	"Headers/Empleados.h"
+	"Headers/Clientes.h"
+	"Headers/Ventas.h"
+	"Headers/Archivos.h"
+	"Headers/Menues.h"
+
+1434034932 c:\users\backup_labs\desktop\supergestionproy\headers\super.h
+
+1434034932 c:\users\backup_labs\desktop\supergestionproy\headers\imprimir.h
+
+1433983445 c:\users\backup_labs\desktop\supergestionproy\headers\validacion.h
+
+1433983382 c:\users\backup_labs\desktop\supergestionproy\headers\fecha.h
+
+1433901460 c:\users\backup_labs\desktop\supergestionproy\headers\articulos.h
+
+1433901638 c:\users\backup_labs\desktop\supergestionproy\headers\clientes.h
+
+1434035510 c:\users\backup_labs\desktop\supergestionproy\headers\menues.h
+
+1434033898 c:\users\backup_labs\desktop\supergestionproy\headers\ventas.h
+
+1434035484 c:\users\backup_labs\desktop\supergestionproy\headers\archivos.h
+
+1433901970 c:\users\maximiliano\documents\github\supergestionproy\headers\empleados.h
+
+1433984544 source:c:\users\ramiro\desktop\supergestionproy\main.cpp
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<ctime>
+	<conio.h>
+	"Headers/Super.h"
+	"Headers/Imprimir.h"
+	"Headers/Validacion.h"
+	"Headers/Fecha.h"
+	"Headers/Articulos.h"
+	"Headers/Empleados.h"
+	"Headers/Clientes.h"
+	"Headers/Ventas.h"
+	"Headers/Archivos.h"
+	"Headers/Menues.h"
+
+1433984544 c:\users\ramiro\desktop\supergestionproy\headers\super.h
+
+1433974516 c:\users\ramiro\desktop\supergestionproy\headers\imprimir.h
+
+1433983445 c:\users\ramiro\desktop\supergestionproy\headers\validacion.h
+
+1433983382 c:\users\ramiro\desktop\supergestionproy\headers\fecha.h
+
+1433901460 c:\users\ramiro\desktop\supergestionproy\headers\articulos.h
+
+1433901970 c:\users\ramiro\desktop\supergestionproy\headers\empleados.h
+
+1433901638 c:\users\ramiro\desktop\supergestionproy\headers\clientes.h
+
+1433985459 c:\users\ramiro\desktop\supergestionproy\headers\ventas.h
+
+1433985469 c:\users\ramiro\desktop\supergestionproy\headers\archivos.h
+
+1433984670 c:\users\ramiro\desktop\supergestionproy\headers\menues.h
+
+1433901970 c:\users\backup_labs\desktop\supergestionproy\headers\empleados.h
 
