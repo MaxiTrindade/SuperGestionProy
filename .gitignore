@@ -1,0 +1,5 @@
+**/build/*
+*.cbp*
+*.layout*
+*.depend*
+*.exe*
