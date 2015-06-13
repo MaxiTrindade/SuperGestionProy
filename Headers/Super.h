@@ -180,7 +180,23 @@ class Archivo{
         void editar(int);
 };
 
+class Usuario{
 
+    private:
+        char nombre[20],clave[20];
+        Fecha fechaUsuario;
+        bool estado;
+
+    public:
+        char* getNombre();
+        char* getClave();
+        bool getEstado();
+        void setNombre(char nombre[20]);
+        void setClave(char clave[20]);
+        void setEstado(bool estado);
+        void login();
+        void cambiarClave();
+};
 
 
 #endif // SUPER_H_INCLUDED

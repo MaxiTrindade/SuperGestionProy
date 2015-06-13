@@ -4,6 +4,7 @@
 #include <cstring>
 #include <ctime>
 #include <conio.h>
+#include <windows.h>
 using namespace std;
 #include "Headers/Super.h"
 #include "Headers/Imprimir.h"
@@ -14,12 +15,16 @@ using namespace std;
 #include "Headers/Clientes.h"
 #include "Headers/Ventas.h"
 #include "Headers/Archivos.h"
+#include "Headers/Usuarios.h"
 #include "Headers/Menues.h"
+
 
 int main(){
     system("COLOR 1C");
     presentacion();
     system("COLOR 1C");
+    Usuario* User = new Usuario();
+    User->login();
     menuPrincipal();
     return 0;
 }

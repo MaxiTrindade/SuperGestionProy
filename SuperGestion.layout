@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="Headers\Clientes.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="Headers\Ventas.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="796" topLine="0" />
+			<Cursor1 position="2990" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="4" />
+		</Folding>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="570" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="Headers\Articulos.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2683" topLine="9" />
 		</Cursor>
 		<Folding>
 			<Collapse line="3" />
@@ -14,26 +27,71 @@
 			<Collapse line="23" />
 			<Collapse line="27" />
 			<Collapse line="31" />
-			<Collapse line="35" />
+		</Folding>
+	</File>
+	<File name="Headers\Menues.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8261" topLine="208" />
+		</Cursor>
+	</File>
+	<File name="Headers\Clientes.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="796" topLine="1" />
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="7" />
+			<Collapse line="11" />
+			<Collapse line="15" />
+			<Collapse line="19" />
+			<Collapse line="23" />
+		</Folding>
+	</File>
+	<File name="Headers\Super.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4533" topLine="22" />
+		</Cursor>
+		<Folding>
+			<Collapse line="5" />
+			<Collapse line="17" />
+			<Collapse line="23" />
+			<Collapse line="34" />
 		</Folding>
 	</File>
 	<File name="Headers\Empleados.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4542" topLine="78" />
+			<Cursor1 position="1138" topLine="18" />
 		</Cursor>
 		<Folding>
 			<Collapse line="31" />
 			<Collapse line="37" />
 		</Folding>
 	</File>
-	<File name="Headers\Fecha.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="Headers\Fecha.h" open="1" top="1" tabpos="11" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="52" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="Headers\Validacion.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="742" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="8" />
+			<Collapse line="13" />
+			<Collapse line="18" />
+			<Collapse line="23" />
+		</Folding>
+	</File>
+	<File name="Headers\Archivos.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1771" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="Headers\Imprimir.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3505" topLine="0" />
+			<Cursor1 position="5492" topLine="0" />
 		</Cursor>
 		<Folding>
 			<Collapse line="3" />
@@ -47,76 +105,7 @@
 			<Collapse line="69" />
 			<Collapse line="75" />
 			<Collapse line="81" />
-			<Collapse line="89" />
-			<Collapse line="97" />
-		</Folding>
-	</File>
-	<File name="Headers\Menues.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8261" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="8" />
-			<Collapse line="29" />
-		</Folding>
-	</File>
-	<File name="Headers\Super.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2106" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="5" />
-			<Collapse line="17" />
-			<Collapse line="23" />
-			<Collapse line="34" />
-		</Folding>
-	</File>
-	<File name="Headers\Validacion.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="742" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Headers\Ventas.h" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2990" topLine="79" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="525" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Headers\Archivos.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="15353" topLine="8" />
-		</Cursor>
-		<Folding>
-			<Collapse line="3" />
-			<Collapse line="85" />
-			<Collapse line="168" />
-			<Collapse line="255" />
-			<Collapse line="320" />
-			<Collapse line="337" />
-			<Collapse line="393" />
-		</Folding>
-	</File>
-	<File name="Headers\Articulos.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2683" topLine="56" />
-		</Cursor>
-		<Folding>
-			<Collapse line="3" />
-			<Collapse line="7" />
-			<Collapse line="11" />
-			<Collapse line="15" />
-			<Collapse line="19" />
-			<Collapse line="23" />
-			<Collapse line="27" />
-			<Collapse line="31" />
-			<Collapse line="35" />
-			<Collapse line="39" />
-			<Collapse line="43" />
-			<Collapse line="47" />
+			<Collapse line="90" />
 		</Folding>
 	</File>
 </CodeBlocks_layout_file>

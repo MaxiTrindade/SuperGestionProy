@@ -4,6 +4,7 @@
 char* Usuario::getNombre(){
     return nombre;
 }
+
 char* Usuario::getClave(){
     return clave;
 }
@@ -13,12 +14,15 @@ char* Usuario::getClave(){
 bool Usuario::getEstado(){
     return estado;
 }
+
 void Usuario::setNombre(char nombre[20]){
     strcpy(this->nombre,nombre);
 }
+
 void Usuario::setClave(char clave[20]){
     strcpy(this->clave,clave);
 }
+
 void Usuario::setEstado(bool estado){
     this->estado=estado;
 }

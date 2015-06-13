@@ -40,6 +40,7 @@
 		<Unit filename="Headers/Imprimir.h" />
 		<Unit filename="Headers/Menues.h" />
 		<Unit filename="Headers/Super.h" />
+		<Unit filename="Headers/Usuarios.h" />
 		<Unit filename="Headers/Validacion.h" />
 		<Unit filename="Headers/Ventas.h" />
 		<Unit filename="main.cpp" />
