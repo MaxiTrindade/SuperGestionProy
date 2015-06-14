@@ -6,6 +6,7 @@ void menuArticulo();
 void menuClientes();
 void menuEmpleados();
 void menuUsuarios(Usuario*);
+void menuAdministracion(Usuario*);
 
 void presentacion(){
     cout<<"\n\n";
@@ -33,8 +34,8 @@ void menuPrincipal(Usuario* User){
 
     while(opc!='S' or opc!= 's'){
         system("CLS");
-        cout<<"---------------------"<<endl;
-        cout<<"MENU PRINCIPAL"<<endl;
+
+        cout<<"MENU PRINCIPAL"<<setw(15)<<"USUARIO: " << User->getNombre()<<endl;
         cout<<"---------------------"<<endl;
         cout<<"A) EMPLEADOS"<<endl;
         cout<<"B) CLIENTES"<<endl;
@@ -65,7 +66,8 @@ void menuPrincipal(Usuario* User){
             case 'G': case 'g':
             case 'H': case 'h':   menuUsuarios(User);
                 break;
-            case 'I': case 'i':
+            case 'I': case 'i':   menuAdministracion(User);
+                break;
             case 'J': case 'j': {
                 system("cls"); cout<<"\n MENU DISPONIBLE SOLO EN LA VERSION COMPLETA...\n\n ";
                 system("pause");
@@ -269,6 +271,7 @@ void menuUsuarios(Usuario* User){
         cout<<" 2 - LISTAR USUARIOS"<<endl;
         cout<<" 3 - CAMBIAR CLAVE"<<endl;
         cout<<" 4 - ELIMINAR USUARIO"<<endl;
+        cout<<" 5 - CAMBIO DE SESION"<<endl;
         cout<<" --------------------"<<endl;
         cout<<" S - VOLVER AL MENU PRINCIPAL\n";
         opc=getch();
@@ -282,7 +285,51 @@ void menuUsuarios(Usuario* User){
                 break;
             case '4': User->eliminar();
                 break;
+            case '5': User->login();
+                break;
             case '0':
+                break;
+            case 'S': case 's': return;
+            default: cout << "\n La opcion ingresada es incorrecta. \n\n ";
+                system("pause");
+                break;
+        }
+    }
+}
+
+void menuAdministracion(Usuario* User){
+
+    char opc='1';
+    Archivo* archivo = new Archivo();
+
+    if(strcmp(User->getNombre(),"INVITADO") ==0 or User->getEstado() == false){
+        system("cls");
+        cout << "\n ACCESO DENEGADO " << endl;
+        cout << "\n No tiene los permisos necesarios para ingresar a este submenu " << endl << endl;
+        system("pause");
+        return;
+    }
+
+    while(opc != 'S' and opc != 's'){
+
+        system("cls");
+        cout<<"\n ADMINISTRACION: " << User->getNombre() << endl;
+        cout<<" ----------------------"<<endl;
+        cout<<" 1 - RECUPERAR REGISTRO"<<endl;
+        cout<<" 2 - BAJA FISICA DE USUARIOS"<<endl;
+        cout<<" 3 - COPIA DE SEGURIDAD"<<endl;
+        cout<<" 4 - RESTAURAR COPIA DE SEGURIDAD"<<endl;
+        cout<<" ----------------------------"<<endl;
+        cout<<" S - VOLVER AL MENU PRINCIPAL\n";
+        opc=getch();
+        switch(opc){
+            case '1': archivo->alta();
+                break;
+            case '2': archivo->BajaFisica();
+                break;
+            case '3': archivo->backup();
+                break;
+            case '4': archivo->restaurarCopia();
                 break;
             case 'S': case 's': return;
             default: cout << "\n La opcion ingresada es incorrecta. \n\n ";

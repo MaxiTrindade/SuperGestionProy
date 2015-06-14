@@ -73,7 +73,7 @@
 
 1433901970 c:\users\maximiliano\documents\github\supergestionproy\headers\empleados.h
 
-1434223683 source:c:\users\ramiro\desktop\supergestionproy\main.cpp
+1434246562 source:c:\users\ramiro\desktop\supergestionproy\main.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -81,6 +81,7 @@
 	<ctime>
 	<conio.h>
 	<windows.h>
+	<iomanip>
 	"Headers/Super.h"
 	"Headers/Imprimir.h"
 	"Headers/Validacion.h"
@@ -89,11 +90,11 @@
 	"Headers/Empleados.h"
 	"Headers/Clientes.h"
 	"Headers/Ventas.h"
-	"Headers/Archivos.h"
 	"Headers/Usuarios.h"
+	"Headers/Archivos.h"
 	"Headers/Menues.h"
 
-1434227735 c:\users\ramiro\desktop\supergestionproy\headers\super.h
+1434246554 c:\users\ramiro\desktop\supergestionproy\headers\super.h
 
 1434225538 c:\users\ramiro\desktop\supergestionproy\headers\imprimir.h
 
@@ -103,17 +104,19 @@
 
 1434216124 c:\users\ramiro\desktop\supergestionproy\headers\articulos.h
 
-1434216124 c:\users\ramiro\desktop\supergestionproy\headers\empleados.h
+1434229995 c:\users\ramiro\desktop\supergestionproy\headers\empleados.h
 
 1434216124 c:\users\ramiro\desktop\supergestionproy\headers\clientes.h
 
 1434216124 c:\users\ramiro\desktop\supergestionproy\headers\ventas.h
 
-1434226214 c:\users\ramiro\desktop\supergestionproy\headers\archivos.h
+1434246720 c:\users\ramiro\desktop\supergestionproy\headers\archivos.h
 
-1434227340 c:\users\ramiro\desktop\supergestionproy\headers\menues.h
+1434246604 c:\users\ramiro\desktop\supergestionproy\headers\menues.h
 
 1433901970 c:\users\backup_labs\desktop\supergestionproy\headers\empleados.h
 
 1434228558 c:\users\ramiro\desktop\supergestionproy\headers\usuarios.h
+
+1434244468 c:\users\ramiro\desktop\supergestionproy\headers\administracion.h
 

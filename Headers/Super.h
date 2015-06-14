@@ -178,6 +178,10 @@ class Archivo{
         void* buscarRegistro(int,int);
         void editarStock(void*,int,int);
         void editar(int);
+        void alta();
+        void BajaFisica();
+        void backup();
+        void restaurarCopia();
 };
 
 class Usuario{
@@ -198,6 +202,10 @@ class Usuario{
         bool comprobarUsuario(char* nombre);
         bool comprobarClave(char* nombre, char* clave);
         void eliminar();
+};
+
+class Administracion{
+    public:
 };
 
 

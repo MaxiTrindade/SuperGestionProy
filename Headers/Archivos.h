@@ -528,5 +528,164 @@ void Archivo::editar(int num){
     fclose(archivo);
 }
 
+void Archivo::alta(){
+
+    int cod,num;
+
+    cout<<"DAR DE ALTA UN REGISTRO "<<endl;
+    cout<<"INGRESE EL TIPO DE REGISTRO(0-ARTICULO,1-CLIENTE,2-EMPLEADO): "<<endl;
+    cin>>num;
+    cout<<"INGRESE EL CODIGO A DAR DE ALTA: ";
+    cin>>cod;
+
+    FILE* archivo;
+    switch(num){
+
+        case arti:{
+            Articulo* articulo = new Articulo();
+            archivo = fopen("Articulos.dat","rb+");
+            while(fread(articulo,sizeof (Articulo),1,archivo)){
+
+                if(articulo->getCodigo() == cod && articulo->getEstado() == false){
+                    articulo->setEstado(true);
+                    fseek(archivo,-sizeof (Articulo),1);
+                    fwrite(articulo,sizeof (Articulo),1,archivo);
+                    fclose(archivo);
+                    cout<<"EL REGISTRO HA SIDO DADO DE ALTA SATISFACTORIAMENTE! "<<endl;
+                    system("pause");
+                }
+            }
+        }
+            break;
+
+        case clie:{
+            Cliente* cliente = new Cliente();
+            archivo = fopen("Clientes.dat","rb+");
+            while(fread(cliente,sizeof (Cliente),1,archivo)){
+
+                if(cliente->getCodigo() == cod && cliente->getEstado() == false){
+                    cliente->setEstado(true);
+                    fseek(archivo,-sizeof (Cliente),1);
+                    fwrite(cliente,sizeof (Cliente),1,archivo);
+                    fclose(archivo);
+                    cout<<"EL REGISTRO HA SIDO DADO DE ALTA SATISFACTORIAMENTE! "<<endl;
+                    system("pause");
+                }
+            }
+        }
+            break;
+
+        case empl:{
+            Empleado* empleado = new Empleado();
+            archivo = fopen("Empleados.dat","rb+");
+            while(fread(empleado,sizeof (Empleado),1,archivo)){
+
+                if(empleado->getCodigo() == cod && empleado->getEstado() == false){
+                    empleado->setEstado(true);
+                    fseek(archivo,-sizeof (Empleado),1);
+                    fwrite(empleado,sizeof (Empleado),1,archivo);
+                    fclose(archivo);
+                    cout<<"EL REGISTRO HA SIDO DADO DE ALTA SATISFACTORIAMENTE! "<<endl;
+                    system("pause");
+                }
+            }
+        }
+            break;
+    }
+}
+
+void Archivo::BajaFisica(){
+
+    Usuario* Usu = new Usuario();
+    Usuario* User = new Usuario();
+
+    FILE* FileUser = fopen("User.bkp","wb");
+    FILE* FileUsuario = fopen("Usuarios.dat","rb");
+
+    while(fread(Usu,sizeof (Usuario),1,FileUsuario)){
+        fwrite(Usu,sizeof (Usuario),1,FileUser);
+    }
+    fclose(FileUser);
+    fclose(FileUsuario);
+
+    FileUser = fopen("User.bkp","rb");
+    FileUsuario = fopen("Usuarios.dat","wb+");
+
+    while(fread(User,sizeof (Usuario),1,FileUser)){
+        if(User->getEstado() == true){
+            fwrite(User,sizeof (Usuario),1,FileUsuario);
+        }
+    }
+    fclose(FileUser);
+    fclose(FileUsuario);
+
+    cout << endl << "La actualizacion ha sido exitosa! " << endl << endl;
+    system("pause");
+////////////////////////////////////////////////////////////////////////////////////
+///ESTO SIRVE SOLO PARA FINES PRACTICOS, LISTA EL ARCHIVO DE USUARIOS. HAY QUE BORRARLO
+    FileUsuario = fopen("Usuarios.dat","rb");
+    while(fread(Usu,sizeof (Usuario),1,FileUsuario)){
+        cout << Usu->getNombre();
+        cout << Usu->getEstado();
+        system("pause");
+    }
+    fclose(FileUsuario);
+}
+
+void Archivo::backup(){
+
+    int cod;
+    system("cls");
+    cout << "\n COPIA DE SEGURIDAD ";
+    cout << "\n ------------------"<<endl;
+    cout << "\n Esta seguro que desea realizar copias de seguridad de todos los archivos?" << endl;
+    cout << "\n 1 - SI / OTRO - NO: ";
+    cin >> cod;
+    if(cod != 1){
+        return;
+    }
+///////////////////////////////////////////////////////////////////////////////////////////////
+///CLIENTE
+    Cliente* client = new Cliente();
+
+    FILE* FileClientes = fopen("BKP/Clientes.bkp","wb");
+    FILE* FileCli = fopen("Clientes.dat","rb");
+
+    while(fread(client,sizeof(Cliente),1,FileCli)){
+        fwrite(client,sizeof(Cliente),1,FileClientes);
+    }
+    fclose(FileCli);
+    fclose(FileClientes);
+
+    cout << endl << "\n El respaldo ha sido exitoso! " << endl << endl;
+    system("pause");
+}
+
+void Archivo::restaurarCopia(){
+
+    int cod;
+    system("cls");
+    cout << "\n COPIA DE SEGURIDAD ";
+    cout << "\n ------------------" << endl;
+    cout << "\n Esta seguro que desea actualizar los archivos, con las copias de seguridad?" << endl;
+    cout << "\n 1 - SI / OTRO - NO: ";
+    cin >> cod;
+    if(cod != 1){
+        return;
+    }
+//////////////////////////////////////////////////////////////////////////////////////////////////
+    ///COLECTIVOS
+    Cliente* Cli = new Cliente();
+
+    FILE* FileCliente = fopen("BKP/Clientes.bkp","rb");
+    FILE* FileCli = fopen("Clientes.dat","wb");
+
+    while(fread(Cli,sizeof (Cliente),1,FileCliente)){
+        fwrite(Cli,sizeof (Cliente),1,FileCli);
+    }
+    fclose(FileCli);
+    fclose(FileCliente);
+}
+
 
 #endif // ARCHIVOS_H_INCLUDED
