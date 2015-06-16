@@ -5,7 +5,7 @@ void menuVenta(); /// LO ARMÉ ASÍ PORQUE CREO QUE RESULTA MÁS CÓMODO Y ORDENADO 
 void menuArticulo();
 void menuClientes();
 void menuEmpleados();
-void menuUsuarios(Usuario*);
+Usuario* menuUsuarios(Usuario*);
 void menuAdministracion(Usuario*);
 
 void presentacion(){
@@ -64,7 +64,7 @@ void menuPrincipal(Usuario* User){
             case 'E': case 'e':
             case 'F': case 'f':
             case 'G': case 'g':
-            case 'H': case 'h':   menuUsuarios(User);
+            case 'H': case 'h':   User=menuUsuarios(User);
                 break;
             case 'I': case 'i':   menuAdministracion(User);
                 break;
@@ -250,20 +250,22 @@ void menuVenta(){
     }
 }
 
-void menuUsuarios(Usuario* User){
+Usuario* menuUsuarios(Usuario* User){
 
     char opc='1';
     Archivo* archivo = new Archivo();
-
-    if(strcmp(User->getNombre(),"INVITADO") ==0 or User->getEstado() == false){
-        system("cls");
-        cout << "\n ACCESO DENEGADO " << endl;
-        cout << "\n No tiene los permisos necesarios para ingresar a este submenu " << endl << endl;
-        system("pause");
-        return;
-    }
+    Usuario* Usu = new Usuario();
 
     while(opc!='S' and opc != 's'){
+
+        if(strcmp(User->getNombre(),"INVITADO") ==0 or User->getEstado() == false){
+            system("cls");
+            cout << "\n ACCESO DENEGADO " << endl;
+            cout << "\n No tiene los permisos necesarios para ingresar a este submenu " << endl << endl;
+            system("pause");
+            return User;
+        }
+
         system("cls");
         cout<<"\n USUARIO: " << User->getNombre() << endl;
         cout<<" --------------------"<<endl;
@@ -276,8 +278,8 @@ void menuUsuarios(Usuario* User){
         cout<<" S - VOLVER AL MENU PRINCIPAL\n";
         opc=getch();
         switch(opc){
-            case '1': if(User->cargar())
-                        archivo->guardar(User,usua);
+            case '1': if(Usu->cargar())
+                        archivo->guardar(Usu,usua);
                 break;
             case '2': archivo->listarTodos(usua);
                 break;
@@ -285,16 +287,17 @@ void menuUsuarios(Usuario* User){
                 break;
             case '4': User->eliminar();
                 break;
-            case '5': User->login();
+            case '5': User=Usu->login();
                 break;
             case '0':
                 break;
-            case 'S': case 's': return;
+            case 'S': case 's': return User;
             default: cout << "\n La opcion ingresada es incorrecta. \n\n ";
                 system("pause");
                 break;
         }
     }
+    return User;
 }
 
 void menuAdministracion(Usuario* User){
