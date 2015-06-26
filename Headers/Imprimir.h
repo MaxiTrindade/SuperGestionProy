@@ -5,7 +5,7 @@ class Imprimir{
 
     public:
         void fecha(Fecha fecha){
-            cout<<fecha.getDia()<<"/"<<fecha.getMes()<<"/"<<fecha.getAnio()<<endl;
+            cout<<fecha.getDia()<<"/"<<fecha.getMes()<<"/"<<fecha.getAnio();
         }
 
         void textoCargaArt(int cod, int stk, int sec, float pre, char nom[20],int num){
@@ -53,6 +53,19 @@ class Imprimir{
             cout<<" INGRESO: ";   if(num == 5) return; fecha(ingreso);
             cout<<" AREA: "; if(num == 6) return; cout<<area<<endl;
             cout<<" SUELDO: $";if(num == 7) return; cout<<sueldo<<endl;
+        }
+
+        void textoCargaProv(char *nombre,char *direc,char *email,char *desc,char *tel,int cat,int codigo,int num){
+            system("cls");
+            cout<<"\n INGRESAR PROVEEDOR: (Volver: Ingrese -1)\n";
+            cout<<" ---------------\n\n";
+            cout<<" CODIGO: "; if(num == 0) return; cout<<codigo<<endl;
+            cout<<" NOMBRE: ";  if(num == 1) return; cout<<nombre<<endl;
+            cout<<" DECRIPCION: ";  if(num == 2) return; cout<<desc<<endl;
+            cout<<" DIRECCION: ";   if(num == 3) return; cout<<direc<<endl;
+            cout<<" TELEFONO: "; if(num == 4) return; cout<<tel<<endl;
+            cout<<" E-MAIL: "; if(num == 5) return; cout<<email<<endl;
+            cout<<" CATEGORIA DE ARTICULOS: "; if(num == 6) return; cout<<cat<<endl;
         }
 
         void textoNoPositivo(){
@@ -122,6 +135,40 @@ class Imprimir{
 
         void usuario(Usuario *obj){
             cout<<"NOMBRE: "<<obj->getNombre()<<endl;
+            cout<<"---------------------------"<<endl;
+        }
+
+        void proveedor(Proveedor *obj){
+            cout<<"CODIGO: "<<obj->getCodigo()<<endl;
+            cout<<"NOMBRE: "<<obj->getNombre()<<endl;
+            cout<<"DESCRIPCION: "<<obj->getDesc()<<endl;
+            cout<<"DIRECCION: "<<obj->getDirec()<<endl;
+            cout<<"TELEFONO: "<<obj->getTelefono()<<endl;
+            cout<<"EMAIL: "<<obj->getEmail()<<endl;
+            cout<<"CATEGORIA: "<<obj->getCategoria()<<endl;
+            cout<<"-------------------------------"<<endl;
+        }
+
+        void compra(Compra *obj){
+            Imprimir *mostrar = new Imprimir();
+
+            cout<<"CODIGO COMPRA: "<<obj->getCodigo()<<endl;
+            cout<<"FECHA COMPRA: ";mostrar->fecha(obj->getFechaCompra());
+            cout<<"CODIGO PROVEEDOR: "<<obj->getCodPro()<<endl;
+            cout<<"TOTAL: $"<<obj->getTotal()<<endl;
+            cout<<"-------------------------------"<<endl<<endl;
+
+        }
+
+        void opcionesListarCod(){
+            cout<<"\t \t <-- \t \t \t \t -->"<<endl;
+            cout<<"\t \t \t INGRESE 0 PARA SALIR"<<endl;
+        }
+
+        void artXventa(ArtXVenta *obj){
+            cout<<"CODIGO DE ARTICULO: "<<obj->getCodArt()<<endl;
+            cout<<"CANTIDAD: "<<obj->getCantidad()<<endl;
+            cout<<"SUBTOTAL: "<<obj->getSubTot()<<endl<<endl;
             cout<<"---------------------------"<<endl;
         }
 };

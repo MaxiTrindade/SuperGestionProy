@@ -5,8 +5,11 @@ void menuVenta(); /// LO ARMÉ ASÍ PORQUE CREO QUE RESULTA MÁS CÓMODO Y ORDENADO 
 void menuArticulo();
 void menuClientes();
 void menuEmpleados();
-void menuUsuarios(Usuario*);
+Usuario* menuUsuarios(Usuario*);
 void menuAdministracion(Usuario*);
+void menuInformes();
+void menuCompra();
+void menuProveedores();
 
 void presentacion(){
     cout<<"\n\n";
@@ -30,28 +33,40 @@ void presentacion(){
 }
 
 void menuPrincipal(Usuario* User){
-    char opc='1';
 
+    char opc='1';
     while(opc!='S' or opc!= 's'){
         system("CLS");
 
-        cout<<"MENU PRINCIPAL"<<setw(15)<<"USUARIO: " << User->getNombre()<<endl;
-        cout<<"---------------------"<<endl;
-        cout<<"A) EMPLEADOS"<<endl;
-        cout<<"B) CLIENTES"<<endl;
-        cout<<"C) ARTICULOS"<<endl;
-        cout<<"D) VENTAS"<<endl;
-        cout<<"E) PROMOCIONES"<<endl;
-        cout<<"F) COMPRAS"<<endl;
-        cout<<"G) PROVEEDORES"<<endl;
-        cout<<"H) USUARIOS"<<endl;
-        cout<<"I) ADMINISTRACION"<<endl;
-        cout<<"J) INFORMES"<<endl;
-        cout<<"---------------------"<<endl;
-        cout<<"S) SALIR"<<endl<<endl;
-        cout<<"OPCION: ";
+        system("CLS");
+        cout<<"\n"<<setw(52)<<"S U P E R - G E S T I O N  "<<(char)5<<setw(30);
+        cout<<setw(53);for(int i=0;i<25;i++) cout<<(char)223; cout<<setw(19)<<"USUARIO: "<<User->getNombre()<<endl;
+        cout<<ends<<(char)201; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)187<<endl;
+        cout<<ends<<(char)186<<setw(43)<<"MENU PRINCIPAL"<<setw(22)<<"FECHA: ";
+        Imprimir* mostrar = new Imprimir();
+        Fecha fechaSys = fechaSistema(fechaSys);
+        mostrar->fecha(fechaSys); cout<<ends<<(char)186<<endl;
+
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(32)<<"A) EMPLEADOS"<<setw(20)<<"F) COMPRAS"<<setw(24)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(31)<<"B) CLIENTES"<<setw(25)<<"G) PROVEEDORES"<<setw(20)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(32)<<"C) ARTICULOS"<<setw(21)<<"H) USUARIOS"<<setw(23)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(29)<<"D) VENTAS"<<setw(30)<<"I) ADMINISTRACION"<<setw(17)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(34)<<"E) PROMOCIONES"<<setw(19)<<"J) INFORMES"<<setw(23)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(40)<<"S) SALIR"<<setw(36)<<(char)186<<endl;
+        cout<<ends<<(char)200; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)188<<endl;
+
+        cout<<endl<<setw(42)<<"OPCION: ";
         opc=getch();
         system("CLS");
+
         switch(opc){
             case 'A': case 'a':   menuEmpleados();
                 break;
@@ -62,19 +77,19 @@ void menuPrincipal(Usuario* User){
             case 'D': case 'd':   menuVenta();
                 break;
             case 'E': case 'e':
-            case 'F': case 'f':
-            case 'G': case 'g':
-            case 'H': case 'h':   menuUsuarios(User);
+                break;
+            case 'F': case 'f':   menuCompra();
+                break;
+            case 'G': case 'g':   menuProveedores();
+                break;
+            case 'H': case 'h':   User = menuUsuarios(User);
                 break;
             case 'I': case 'i':   menuAdministracion(User);
                 break;
-            case 'J': case 'j': {
-                system("cls"); cout<<"\n MENU DISPONIBLE SOLO EN LA VERSION COMPLETA...\n\n ";
-                system("pause");
-            }
+            case 'J': case 'j':   menuInformes();
                 break;
             case 'S': case 's': return;
-            default: cout << "\n La opcion ingresada es incorrecta. \n\n "; system("pause");
+            default:
                 break;
         }
     }
@@ -88,23 +103,36 @@ void menuArticulo(){
 
     while(opc!='0'){
         system("CLS");
-        cout<<"---------------------"<<endl;
-        cout<<"MENU ARTICULO"<<endl;
-        cout<<"---------------------"<<endl;
-        cout<<"1) CARGAR ARTICULO"<<endl;
-        cout<<"2) EDITAR ARTICULO"<<endl;
-        cout<<"3) MOSTRAR POR CODIGO"<<endl;
-        cout<<"4) MOSTRAR TODOS"<<endl;
-        cout<<"5) DAR DE BAJA"<<endl;
-        cout<<"---------------------"<<endl;
-        cout<<"0) SALIR"<<endl;
-        cout<<"OPCION: ";
+
+        cout<<"\n"<<setw(52)<<"S U P E R - G E S T I O N  "<<(char)5<<setw(30);
+        cout<<setw(53);for(int i=0;i<25;i++) cout<<(char)223; cout<<endl;
+        cout<<ends<<(char)201; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)187<<endl;
+        cout<<ends<<(char)186<<setw(43)<<"MENU ARTICULOS"<<setw(33)<<(char)186<<endl;
+
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(45)<<"1- CARGAR ARTICULO"<<setw(31)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(45)<<"2- EDITAR ARTICULO"<<setw(31)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(47)<<"3- MOSTRAR POR CODIGO"<<setw(29)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(44)<<"4- MOSTRAR TODOS"<<setw(32)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(43)<<"5- DAR DE BAJA"<<setw(33)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(40)<<"0- SALIR"<<setw(36)<<(char)186<<endl;
+        cout<<ends<<(char)200; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)188<<endl;
+
+        cout<<endl<<setw(42)<<"OPCION: ";
+
         opc=getch();
         switch(opc){
             case '1': if(art->cargar())
                         archivo->guardar(art,arti);
                 break;
-            case '2': archivo->editar(arti);
+            case '2':
                 break;
             case '3': archivo->listarXCodigo(arti);
                 break;
@@ -128,23 +156,34 @@ void menuClientes(){
 
     while(opc!='0'){
         system("CLS");
-        cout<<"---------------------"<<endl;
-        cout<<"MENU CLIENTES"<<endl;
-        cout<<"---------------------"<<endl;
-        cout<<"1) CARGAR CLIENTE"<<endl;
-        cout<<"2) EDITAR CLIENTE"<<endl;
-        cout<<"3) MOSTRAR POR CODIGO"<<endl;
-        cout<<"4) MOSTRAR TODOS"<<endl;
-        cout<<"5) DAR DE BAJA"<<endl;
-        cout<<"---------------------"<<endl;
-        cout<<"0) SALIR"<<endl;
-        cout<<"OPCION: ";
+        cout<<"\n"<<setw(52)<<"S U P E R - G E S T I O N  "<<(char)5<<setw(30);
+        cout<<setw(53);for(int i=0;i<25;i++) cout<<(char)223; cout<<endl;
+        cout<<ends<<(char)201; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)187<<endl;
+        cout<<ends<<(char)186<<setw(43)<<"MENU CLIENTES"<<setw(33)<<(char)186<<endl;
+
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(45)<<"1- CARGAR CLIENTE"<<setw(31)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(45)<<"2- EDITAR CLIENTE"<<setw(31)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(47)<<"3- MOSTRAR POR CODIGO"<<setw(29)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(44)<<"4- MOSTRAR TODOS"<<setw(32)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(43)<<"5- DAR DE BAJA"<<setw(33)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(40)<<"0- SALIR"<<setw(36)<<(char)186<<endl;
+        cout<<ends<<(char)200; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)188<<endl;
+
+        cout<<endl<<setw(42)<<"OPCION: ";
         opc=getch();
         switch(opc){
             case '1':   if(cli->cargar())
                             archivo->guardar(cli,clie);
                 break;
-            case '2':   archivo->editar(clie);
+            case '2':
                 break;
             case '3':   archivo->listarXCodigo(clie);
                 break;
@@ -168,18 +207,30 @@ void menuEmpleados(){
 
     while(opc!='0'){
         system("CLS");
-        cout<<"---------------------"<<endl;
-        cout<<"MENU EMPLEADOS"<<endl;
-        cout<<"---------------------"<<endl;
-        cout<<"1) CARGAR EMPLEADO"<<endl;
-        cout<<"2) EDITAR EMPLEADO"<<endl;
-        cout<<"3) MOSTRAR POR CODIGO"<<endl;
-        cout<<"4) MOSTRAR TODOS"<<endl;
-        cout<<"5) MOSTRAR SECTOR"<<endl;
-        cout<<"6) DAR DE BAJA"<<endl;
-        cout<<"---------------------"<<endl;
-        cout<<"0) SALIR"<<endl;
-        cout<<"OPCION: ";
+        cout<<"\n"<<setw(52)<<"S U P E R - G E S T I O N  "<<(char)5<<setw(30);
+        cout<<setw(53);for(int i=0;i<25;i++) cout<<(char)223; cout<<endl;
+        cout<<ends<<(char)201; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)187<<endl;
+        cout<<ends<<(char)186<<setw(43)<<"MENU EMPLEADOS"<<setw(33)<<(char)186<<endl;
+
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(45)<<"1- CARGAR EMPLEADO"<<setw(31)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(45)<<"2- EDITAR EMPLEADO"<<setw(31)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(47)<<"3- MOSTRAR POR CODIGO"<<setw(29)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(44)<<"4- MOSTRAR TODOS"<<setw(32)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(48)<<"5- MOSTRAR POR SECCION"<<setw(28)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(43)<<"6- DAR DE BAJA"<<setw(33)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(40)<<"0- SALIR"<<setw(36)<<(char)186<<endl;
+        cout<<ends<<(char)200; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)188<<endl;
+
+        cout<<endl<<setw(42)<<"OPCION: ";
         opc=getch();
         system("CLS");
         switch(opc){
@@ -213,24 +264,37 @@ void menuVenta(){
 
     while(opc!='0'){
         system("CLS");
-        cout<<"---------------------"<<endl;
-        cout<<"MENU VENTA"<<endl;
-        cout<<"---------------------"<<endl;
-        cout<<"1) CARGAR VENTA"<<endl;
-        cout<<"2) MOSTRAR TODAS LAS VENTAS"<<endl;
-        cout<<"3) MOSTRAR POR CODIGO"<<endl;
-        cout<<"4) MOSTRAR VENTAS POR CLIENTE"<<endl;
-        cout<<"5) MOSTRAR VENTAS POR ARTICULO"<<endl;
-        cout<<"6) MOSTRAR VENTAS POR FECHA"<<endl;
-        cout<<"---------------------"<<endl;
-        cout<<"0) SALIR"<<endl;
-        cout<<"OPCION: ";
+        cout<<"\n"<<setw(52)<<"S U P E R - G E S T I O N  "<<(char)5<<setw(30);
+        cout<<setw(53);for(int i=0;i<25;i++) cout<<(char)223; cout<<endl;
+        cout<<ends<<(char)201; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)187<<endl;
+        cout<<ends<<(char)186<<setw(42)<<"MENU VENTAS"<<setw(34)<<(char)186<<endl;
+
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(44)<<"1- CARGAR VENTA"<<setw(32)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(45)<<"2- MOSTRAR TODAS"<<setw(31)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(48)<<"3- MOSTRAR POR CODIGO"<<setw(28)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(49)<<"4- MOSTRAR POR CLIENTE"<<setw(27)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(49)<<"5- MOSTRAR POR ARTICULO"<<setw(27)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(47)<<"6- MOSTRAR POR FECHA"<<setw(29)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(40)<<"0- SALIR"<<setw(36)<<(char)186<<endl;
+        cout<<ends<<(char)200; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)188<<endl;
+
+        cout<<endl<<setw(42)<<"OPCION: ";
         opc=getch();
+        system("CLS");
         switch(opc){
-            case '1': estado = venta->cargar();
+            case '1': /*estado = venta->cargar();
                     if(estado == grabo or estado == bajaLogica){
                         archivo->guardar(venta,vent);
-                    }
+                    }*/
                 break;
             case '2': archivo->listarTodos(vent);
                 break;
@@ -250,34 +314,132 @@ void menuVenta(){
     }
 }
 
-void menuUsuarios(Usuario* User){
+void menuCompra(){
+
+    int estado;
+    char opc='1';
+    Compra *compra = new Compra();
+    Archivo* archivo = new Archivo();
+
+    while(opc!='0'){
+        system("CLS");
+        cout<<"---------------------"<<endl;
+        cout<<"MENU COMPRA"<<endl;
+        cout<<"---------------------"<<endl;
+        cout<<"1) CARGAR COMPRA"<<endl;
+        cout<<"2) MOSTRAR TODAS LAS COMPRAS EFECTUADAS"<<endl;
+        cout<<"3) MOSTRAR LAS COMPRAS MAL INGRESADAS"<<endl;
+        cout<<"4) MOSTRAR POR CODIGO"<<endl;
+        cout<<"---------------------"<<endl;
+        cout<<"0) SALIR"<<endl;
+        cout<<"OPCION: ";
+        opc=getch();
+        switch(opc){
+            case '1': estado = compra->cargar();
+                    if(estado == 0 or estado == 1){
+                        archivo->guardar(compra,comp);
+                    }
+                break;
+            case '2': archivo->listarTodos(comp);
+                break;
+            case '3':
+            case '4': //archivo->listarXCodigo(vent);
+                break;
+            case '0':
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+void menuProveedores(){
+    char opc='1';
+    Proveedor* pro = new Proveedor();
+    Archivo* archivo = new Archivo();
+
+    while(opc!='0'){
+
+        system("CLS");
+        cout<<"\n"<<setw(52)<<"S U P E R - G E S T I O N  "<<(char)5<<setw(30);
+        cout<<setw(53);for(int i=0;i<25;i++) cout<<(char)223; cout<<endl;
+        cout<<ends<<(char)201; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)187<<endl;
+        cout<<ends<<(char)186<<setw(44)<<"MENU PROVEEDORES"<<setw(32)<<(char)186<<endl;
+
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(45)<<"1- CARGAR PROVEEDOR"<<setw(31)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(45)<<"2- EDITAR PROVEEDOR"<<setw(31)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(46)<<"3- MOSTRAR POR CODIGO"<<setw(30)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(44)<<"4- MOSTRAR TODOS"<<setw(32)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(48)<<"5- MOSTRAR POR CATEGORIA"<<setw(28)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(40)<<"0- SALIR"<<setw(36)<<(char)186<<endl;
+        cout<<ends<<(char)200; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)188<<endl;
+
+        cout<<endl<<setw(42)<<"OPCION: ";
+        opc=getch();
+
+        system("CLS");
+        switch(opc){
+            case '1':   if(pro->cargar())
+                            archivo->guardar(pro,prov);
+                break;
+            case '2':
+                break;
+            case '3':  // archivo->listarXCodigo(prov);
+                break;
+            case '4':   archivo->listarTodos(prov);
+                break;
+            case '5':
+                break;
+            case '0':
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+Usuario* menuUsuarios(Usuario* User){
 
     char opc='1';
     Archivo* archivo = new Archivo();
-
-    if(strcmp(User->getNombre(),"INVITADO") ==0 or User->getEstado() == false){
-        system("cls");
-        cout << "\n ACCESO DENEGADO " << endl;
-        cout << "\n No tiene los permisos necesarios para ingresar a este submenu " << endl << endl;
-        system("pause");
-        return;
-    }
+    Usuario* Usu = new Usuario();
 
     while(opc!='S' and opc != 's'){
-        system("cls");
-        cout<<"\n USUARIO: " << User->getNombre() << endl;
-        cout<<" --------------------"<<endl;
-        cout<<" 1 - AGREGAR USUARIOS"<<endl;
-        cout<<" 2 - LISTAR USUARIOS"<<endl;
-        cout<<" 3 - CAMBIAR CLAVE"<<endl;
-        cout<<" 4 - ELIMINAR USUARIO"<<endl;
-        cout<<" 5 - CAMBIO DE SESION"<<endl;
-        cout<<" --------------------"<<endl;
-        cout<<" S - VOLVER AL MENU PRINCIPAL\n";
+        system("CLS");
+        cout<<"\n"<<setw(52)<<"S U P E R - G E S T I O N  "<<(char)5<<setw(30);
+        cout<<setw(53);for(int i=0;i<25;i++) cout<<(char)223; cout<<endl;
+        cout<<ends<<(char)201; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)187<<endl;
+        cout<<ends<<(char)186<<setw(43)<<"MENU USUARIOS"<<setw(33)<<(char)186<<endl;
+
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(45)<<"1- AGREGAR USUARIO"<<setw(31)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(45)<<"2- LISTAR USUARIOS"<<setw(31)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(44)<<"3- CAMBIAR CLAVE"<<setw(32)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(41)<<"4- ELIMINAR"<<setw(35)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(44)<<"5- CAMBIAR SESION"<<setw(32)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(40)<<"0- SALIR"<<setw(36)<<(char)186<<endl;
+        cout<<ends<<(char)200; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)188<<endl;
+
+        cout<<endl<<setw(42)<<"OPCION: ";
         opc=getch();
         switch(opc){
-            case '1': if(User->cargar())
-                        archivo->guardar(User,usua);
+            case '1': if(Usu->cargar())
+                        archivo->guardar(Usu,usua);
                 break;
             case '2': archivo->listarTodos(usua);
                 break;
@@ -285,16 +447,15 @@ void menuUsuarios(Usuario* User){
                 break;
             case '4': User->eliminar();
                 break;
-            case '5': User->login();
+            case '5': User=Usu->login();
                 break;
-            case '0':
+            case '0': return User;
                 break;
-            case 'S': case 's': return;
-            default: cout << "\n La opcion ingresada es incorrecta. \n\n ";
-                system("pause");
+            default:
                 break;
         }
     }
+    return User;
 }
 
 void menuAdministracion(Usuario* User){
@@ -302,25 +463,31 @@ void menuAdministracion(Usuario* User){
     char opc='1';
     Archivo* archivo = new Archivo();
 
-    if(strcmp(User->getNombre(),"INVITADO") ==0 or User->getEstado() == false){
-        system("cls");
-        cout << "\n ACCESO DENEGADO " << endl;
-        cout << "\n No tiene los permisos necesarios para ingresar a este submenu " << endl << endl;
-        system("pause");
-        return;
-    }
-
     while(opc != 'S' and opc != 's'){
 
-        system("cls");
-        cout<<"\n ADMINISTRACION: " << User->getNombre() << endl;
-        cout<<" ----------------------"<<endl;
-        cout<<" 1 - RECUPERAR REGISTRO"<<endl;
-        cout<<" 2 - BAJA FISICA DE USUARIOS"<<endl;
-        cout<<" 3 - COPIA DE SEGURIDAD"<<endl;
-        cout<<" 4 - RESTAURAR COPIA DE SEGURIDAD"<<endl;
-        cout<<" ----------------------------"<<endl;
-        cout<<" S - VOLVER AL MENU PRINCIPAL\n";
+        system("CLS");
+        cout<<"\n"<<setw(52)<<"S U P E R - G E S T I O N  "<<(char)5<<setw(30);
+        cout<<setw(53);for(int i=0;i<25;i++) cout<<(char)223; cout<<setw(19)<<"USUARIO: "<<User->getNombre()<<endl;
+        cout<<ends<<(char)201; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)187<<endl;
+        cout<<ends<<(char)186<<setw(45)<<"MENU ADMINISTRACION"<<setw(31)<<(char)186<<endl;
+
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(46)<<"1- RECUPERAR REGISTRO"<<setw(30)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(49)<<"2- BAJA FISICA DE USUARIOS"<<setw(27)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(51)<<"3- REALIZAR COPIA DE SEGURIDAD"<<setw(25)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(44)<<"4- RESTAURAR COPIA"<<setw(32)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(51)<<"5- CAMBIAR COLOR DEL PROGRAMA"<<setw(25)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(40)<<"0- SALIR"<<setw(36)<<(char)186<<endl;
+        cout<<ends<<(char)200; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)188<<endl;
+
+        cout<<endl<<setw(42)<<"OPCION: ";
         opc=getch();
         switch(opc){
             case '1': archivo->alta();
@@ -331,12 +498,57 @@ void menuAdministracion(Usuario* User){
                 break;
             case '4': archivo->restaurarCopia();
                 break;
-            case 'S': case 's': return;
-            default: cout << "\n La opcion ingresada es incorrecta. \n\n ";
-                system("pause");
+            case '5': User->cambiarColor();
+                break;
+            case '0': return;
+            default:
                 break;
         }
     }
 }
+
+void menuInformes(){
+
+    Informe* informar = new Informe();
+    char opc='1';
+
+    while(opc!='0'){
+        system("CLS");
+        cout<<"---------------------"<<endl;
+        cout<<"MENU INFORMES"<<endl;
+        cout<<"---------------------"<<endl;
+        cout<<"1) BALANCE TOTAL DE COMPROBACION"<<endl;
+        cout<<"2) DISTRIBUCION DE ARTICULOS POR SECCION"<<endl;
+        cout<<"3) ARTICULOS MAS REDITUABLES"<<endl;
+        cout<<"4) ARTICULOS AGOTADOS EN STOCK"<<endl;
+        cout<<"5) EMPLEADOS CON MAS VENTAS"<<endl;
+        cout<<"6) DAR DE BAJA"<<endl;
+        cout<<"---------------------"<<endl;
+        cout<<"0) SALIR"<<endl;
+        cout<<"OPCION: ";
+        opc=getch();
+        system("CLS");
+        switch(opc){
+            case '1':
+                break;
+            case '2':   informar->porcArtCargados();
+                break;
+            case '3':
+                break;
+            case '4':
+                break;
+            case '5':
+                break;
+            case '6':
+                break;
+            case '0':
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+
 
 #endif // MENUES_H_INCLUDED

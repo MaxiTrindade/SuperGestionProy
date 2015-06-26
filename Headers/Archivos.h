@@ -21,7 +21,7 @@ void Archivo::guardar(void* objeto,int num){   //// EN ESTA FUNCION SE HAN COMEN
             fwrite(cliente,sizeof(Cliente),1,archivo);
         }
             break;
-/*
+
         case prov:
         {
             Proveedor* proveedor = (Proveedor*)objeto;
@@ -29,7 +29,7 @@ void Archivo::guardar(void* objeto,int num){   //// EN ESTA FUNCION SE HAN COMEN
             fwrite(proveedor,sizeof(Proveedor),1,archivo);
         }
             break;
-*/
+
         case empl:
         {
             Empleado* empleado = (Empleado*)objeto;
@@ -37,7 +37,7 @@ void Archivo::guardar(void* objeto,int num){   //// EN ESTA FUNCION SE HAN COMEN
             fwrite(empleado,sizeof (Empleado),1,archivo);
         }
             break;
-/*
+
         case comp:
         {
             Compra* compra = (Compra*)objeto;
@@ -45,7 +45,7 @@ void Archivo::guardar(void* objeto,int num){   //// EN ESTA FUNCION SE HAN COMEN
             fwrite(compra,sizeof (Compra),1,archivo);
         }
             break;
-*/
+
         case vent:
         {
             Venta* venta = (Venta*)objeto;
@@ -79,6 +79,14 @@ void Archivo::guardar(void* objeto,int num){   //// EN ESTA FUNCION SE HAN COMEN
         }
             break;
 
+        case artXCom:
+        {
+            ArtXCompra* ArtxCom = (ArtXCompra*)objeto;
+            archivo = fopen("ArtXCompra.dat","ab");
+            fwrite(ArtxCom,sizeof(Articulo),1,archivo);
+        }
+            break;
+
     }
     fclose(archivo);
 }
@@ -104,6 +112,7 @@ void Archivo::listarTodos(int num){
             system("pause");
         }
             break;
+
         case clie:{
             Cliente* cliente = new Cliente();
             archivo = fopen("Clientes.dat","rb");
@@ -129,7 +138,7 @@ void Archivo::listarTodos(int num){
         }
             break;
 
-            case empl:{
+        case empl:{
             Empleado* empleado = new Empleado();
             Imprimir* mostrar = new Imprimir();
             archivo = fopen("Empleados.dat","rb");
@@ -143,7 +152,7 @@ void Archivo::listarTodos(int num){
         }
             break;
 
-            case usua:{
+        case usua:{
             Usuario* user = new Usuario();
             archivo = fopen("Usuarios.dat","rb");
             while(fread(user,sizeof (Usuario),1,archivo)){
@@ -154,6 +163,18 @@ void Archivo::listarTodos(int num){
             }
             system("pause");
         }
+            break;
+
+        case prov:{
+            Proveedor* proveedor = new Proveedor();
+            archivo = fopen("Proveedores.dat","rb");
+            while(fread(proveedor,sizeof (Proveedor),1,archivo)){
+                    mostrar->proveedor(proveedor);
+            }
+            system("pause");
+        }
+            break;
+
     }
     fclose(archivo);
 }
@@ -329,10 +350,22 @@ int Archivo::contarRegistros(int num){
             Venta* venta = new Venta();
             archivo = fopen("Ventas.dat","rb");
             while(fread(venta,sizeof (Venta),1,archivo)){
-                contador++;
+                if(venta->getEstado())
+                    contador++;
             }
         }
             break;
+
+        case arti:{
+            Articulo* articulo = new Articulo();
+            archivo = fopen("Articulos.dat","rb");
+            while(fread(articulo,sizeof (Articulo),1,archivo)){
+                if(articulo->getEstado())
+                    contador++;
+            }
+        }
+            break;
+
     }
     return contador;
 }
@@ -446,94 +479,12 @@ void* Archivo::buscarRegistro(int num,int codigo){
     }
 }
 
-void Archivo::editarStock(void* objeto,int num,int cod){
-
-    FILE* archivo;
-
-    switch(num){
-
-        case arti:{
-            Articulo* articulo = new Articulo();
-            articulo = (Articulo*) objeto;
-            Articulo* Arctic = new Articulo();
-            archivo = fopen("Articulos.dat","rb+");
-            while(fread(Arctic,sizeof (Articulo),1,archivo)){
-
-                if(Arctic->getCodigo() == cod){
-                    fseek(archivo,-sizeof (Articulo),1);
-                    Arctic->setStock(articulo->getStock());
-                    fwrite(Arctic,sizeof (Articulo),1,archivo);
-                    fclose(archivo);
-                    return;
-                }
-            }
-        }
-            break;
-    }
-    fclose(archivo);
-}
-
-void Archivo::editar(int num){
-
-    int cod;
-
-    FILE* archivo;
-    cout<<"EDITAR POR CODIGO"<<endl;
-    cout<<"---------------------------"<<endl;
-    cout<<"INGRESE EL CODIGO A EDITAR: ";
-    cin>>cod;
-    cout<<"---------------------------"<<endl;
-
-    switch(num){
-
-        case arti:{
-
-            Articulo* Arctic = new Articulo();
-            Articulo* Art = new Articulo();
-            archivo = fopen("Articulos.dat","rb+");
-            while(fread(Arctic,sizeof (Articulo),1,archivo)){
-
-                if(Arctic->getCodigo() == cod){
-                    fseek(archivo,-sizeof (Articulo),1);
-                    if(Art->cargar()){
-                    cout<<"---------------------------"<<endl;
-                    fwrite(Art,sizeof (Articulo),1,archivo);
-                    fclose(archivo);
-                    return;
-                    }
-                }
-            }
-        }
-            break;
-        case clie:{
-
-            Cliente* Client = new Cliente();
-            Cliente* Cli = new Cliente();
-            archivo = fopen("Clientes.dat","rb+");
-            while(fread(Client,sizeof (Cliente),1,archivo)){
-
-                if(Client->getCodigo() == cod){
-                    fseek(archivo,-sizeof (Cliente),1);
-                    if(Cli->cargar()){
-                    cout<<"---------------------------"<<endl;
-                    fwrite(Cli,sizeof (Cliente),1,archivo);
-                    fclose(archivo);
-                    return;
-                    }
-                }
-            }
-        }
-            break;
-    }
-    fclose(archivo);
-}
-
 void Archivo::alta(){
 
     int cod,num;
 
     cout<<"DAR DE ALTA UN REGISTRO "<<endl;
-    cout<<"INGRESE EL TIPO DE REGISTRO(0-ARTICULO,1-CLIENTE,2-EMPLEADO): "<<endl;
+    cout<<"INGRESE EL TIPO DE REGISTRO(0-ARTICULO,1-CLIENTE,3-EMPLEADO): "<<endl;
     cin>>num;
     cout<<"INGRESE EL CODIGO A DAR DE ALTA: ";
     cin>>cod;
@@ -596,40 +547,145 @@ void Archivo::alta(){
 
 void Archivo::BajaFisica(){
 
-    Usuario* Usu = new Usuario();
-    Usuario* User = new Usuario();
+    int opc=0,num=0;
+    char bkp[20],dat[20];
+    Validacion* validar = new Validacion();
 
-    FILE* FileUser = fopen("User.bkp","wb");
-    FILE* FileUsuario = fopen("Usuarios.dat","rb");
+    system("cls");
+    cout << "ELIMINAR REGISTROS DEL ARCHIVO " << endl;
+    cout << "INGRESE EL NUMERO DE ARCHIVO QUE QUIERE ELIMINAR " << endl;
+    cout << "1-ARTICULOS 2-CLIENTES 3-EMPLEADOS 4-USUARIOS 5-TODO: ";
+    cin>>opc;
+    if(validar->regresar(opc))
+        return;
 
-    while(fread(Usu,sizeof (Usuario),1,FileUsuario)){
-        fwrite(Usu,sizeof (Usuario),1,FileUser);
+    if(opc==5){
+        opc=1;
+        num=5;
     }
-    fclose(FileUser);
-    fclose(FileUsuario);
 
-    FileUser = fopen("User.bkp","rb");
-    FileUsuario = fopen("Usuarios.dat","wb+");
+    switch(opc){
 
-    while(fread(User,sizeof (Usuario),1,FileUser)){
-        if(User->getEstado() == true){
-            fwrite(User,sizeof (Usuario),1,FileUsuario);
+        case 1:{
+            Articulo* reg = new Articulo();
+            Articulo* aux = new Articulo();
+            strcpy(bkp,"BKP/Articulos.bkp");
+            strcpy(dat,"Articulos.dat");
+
+            FILE* backup = fopen(bkp,"wb");
+            FILE* archivo = fopen(dat,"rb");
+
+            while(fread(reg,sizeof (Articulo),1,archivo)){
+                fwrite(reg,sizeof (Articulo),1,backup);
+            }
+            fclose(backup);
+            fclose(archivo);
+
+            backup = fopen(bkp,"rb");
+            archivo = fopen(dat,"wb+");
+
+            while(fread(aux,sizeof (Articulo),1,backup)){
+                if(aux->getEstado() == true){
+                    fwrite(aux,sizeof (Articulo),1,archivo);
+                }
+            }
+            fclose(backup);
+            fclose(archivo);
+            if(num!=5){
+                break;
+            }
+        }
+        case 2:{
+            Cliente* reg = new Cliente();
+            Cliente* aux = new Cliente();
+            strcpy(bkp,"BKP/Clientes.bkp");
+            strcpy(dat,"Clientes.dat");
+
+            FILE* backup = fopen(bkp,"wb");
+            FILE* archivo = fopen(dat,"rb");
+
+            while(fread(reg,sizeof (Cliente),1,archivo)){
+                fwrite(reg,sizeof (Cliente),1,backup);
+            }
+            fclose(backup);
+            fclose(archivo);
+
+            backup = fopen(bkp,"rb");
+            archivo = fopen(dat,"wb+");
+
+            while(fread(aux,sizeof (Cliente),1,backup)){
+                if(aux->getEstado() == true){
+                    fwrite(aux,sizeof (Cliente),1,archivo);
+                }
+            }
+            fclose(backup);
+            fclose(archivo);
+            if(num!=5){
+                break;
+            }
+        }
+        case 3:{
+            Empleado* reg = new Empleado();
+            Empleado* aux = new Empleado();
+            strcpy(bkp,"BKP/Empleados.bkp");
+            strcpy(dat,"Empleados.dat");
+
+            FILE* backup = fopen(bkp,"wb");
+            FILE* archivo = fopen(dat,"rb");
+
+            while(fread(reg,sizeof (Empleado),1,archivo)){
+                fwrite(reg,sizeof (Empleado),1,backup);
+            }
+            fclose(backup);
+            fclose(archivo);
+
+            backup = fopen(bkp,"rb");
+            archivo = fopen(dat,"wb+");
+
+            while(fread(aux,sizeof (Empleado),1,backup)){
+                if(aux->getEstado() == true){
+                    fwrite(aux,sizeof (Empleado),1,archivo);
+                }
+            }
+            fclose(backup);
+            fclose(archivo);
+            if(num!=5){
+                break;
+            }
+        }
+        case 4:{
+            Usuario* reg = new Usuario();
+            Usuario* aux = new Usuario();
+            strcpy(bkp,"BKP/User.bkp");
+            strcpy(dat,"Usuarios.dat");
+
+            FILE* backup = fopen(bkp,"wb");
+            FILE* archivo = fopen(dat,"rb");
+
+            while(fread(reg,sizeof (Usuario),1,archivo)){
+                fwrite(reg,sizeof (Usuario),1,backup);
+            }
+            fclose(backup);
+            fclose(archivo);
+
+            backup = fopen(bkp,"rb");
+            archivo = fopen(dat,"wb+");
+
+            while(fread(aux,sizeof (Usuario),1,backup)){
+                if(aux->getEstado() == true){
+                    fwrite(aux,sizeof (Usuario),1,archivo);
+                }
+            }
+            fclose(backup);
+            fclose(archivo);
+            break;
         }
     }
-    fclose(FileUser);
-    fclose(FileUsuario);
 
-    cout << endl << "La actualizacion ha sido exitosa! " << endl << endl;
+    cout<<endl<<"La actualizacion ha sido exitosa! "<<endl<<endl;
     system("pause");
 ////////////////////////////////////////////////////////////////////////////////////
 ///ESTO SIRVE SOLO PARA FINES PRACTICOS, LISTA EL ARCHIVO DE USUARIOS. HAY QUE BORRARLO
-    FileUsuario = fopen("Usuarios.dat","rb");
-    while(fread(Usu,sizeof (Usuario),1,FileUsuario)){
-        cout << Usu->getNombre();
-        cout << Usu->getEstado();
-        system("pause");
-    }
-    fclose(FileUsuario);
 }
 
 void Archivo::backup(){
@@ -645,7 +701,7 @@ void Archivo::backup(){
         return;
     }
 ///////////////////////////////////////////////////////////////////////////////////////////////
-///CLIENTE
+    ///CLIENTE
     Cliente* client = new Cliente();
 
     FILE* FileClientes = fopen("BKP/Clientes.bkp","wb");
@@ -656,6 +712,50 @@ void Archivo::backup(){
     }
     fclose(FileCli);
     fclose(FileClientes);
+    ///ARTICULOS
+    Articulo* Arti = new Articulo();
+
+    FILE* FileArticulo = fopen("BKP/Articulos.bkp","wb");
+    FILE* FileArti = fopen("Articulos.dat","rb");
+
+    while(fread(Arti,sizeof(Articulo),1,FileArti)){
+        fwrite(Arti,sizeof(Articulo),1,FileArticulo);
+    }
+    fclose(FileArti);
+    fclose(FileArticulo);
+    ///EMPLEADOS
+    Empleado* emp = new Empleado();
+
+    FILE* Filempleado = fopen("BKP/Empleados.bkp","wb");
+    FILE* Filemp = fopen("Empleados.dat","rb");
+
+    while(fread(emp,sizeof(Empleado),1,Filemp)){
+        fwrite(emp,sizeof(Empleado),1,Filempleado);
+    }
+    fclose(Filemp);
+    fclose(Filempleado);
+    ///VENTAS
+    Venta* Vent = new Venta();
+
+    FILE* FileVentas = fopen("BKP/Ventas.bkp","wb");
+    FILE* FileVent = fopen("Ventas.dat","rb");
+
+    while(fread(Vent,sizeof(Venta),1,FileVent)){
+        fwrite(Vent,sizeof(Venta),1,FileVentas);
+    }
+    fclose(FileVent);
+    fclose(FileVentas);
+    ///USUARIOS
+    Usuario* Usu = new Usuario();
+
+    FILE* FileUsuario = fopen("BKP/Usuarios.bkp","wb");
+    FILE* FileUsu = fopen("Usuarios.dat","rb");
+
+    while(fread(Usu,sizeof(Usuario),1,FileUsu)){
+        fwrite(Usu,sizeof(Usuario),1,FileUsuario);
+    }
+    fclose(FileUsu);
+    fclose(FileUsuario);
 
     cout << endl << "\n El respaldo ha sido exitoso! " << endl << endl;
     system("pause");
@@ -674,7 +774,7 @@ void Archivo::restaurarCopia(){
         return;
     }
 //////////////////////////////////////////////////////////////////////////////////////////////////
-    ///COLECTIVOS
+    ///CLIENTE
     Cliente* Cli = new Cliente();
 
     FILE* FileCliente = fopen("BKP/Clientes.bkp","rb");
@@ -685,7 +785,138 @@ void Archivo::restaurarCopia(){
     }
     fclose(FileCli);
     fclose(FileCliente);
+     ///ARTICULOS
+    Articulo* Arti = new Articulo();
+
+    FILE* FileArticulo = fopen("BKP/Articulos.bkp","rb");
+    FILE* FileArti = fopen("Articulos.dat","wb");
+
+    while(fread(Arti,sizeof (Articulo),1,FileArticulo)){
+        fwrite(Arti,sizeof (Articulo),1,FileArti);
+    }
+    fclose(FileArti);
+    fclose(FileArticulo);
+    ///EMPLEADOS
+    Empleado* Emp = new Empleado();
+
+    FILE* FileEmpleado = fopen("BKP/Empleados.bkp","rb");
+    FILE* FileEmp = fopen("Empleados.dat","wb");
+
+    while(fread(Emp,sizeof (Empleado),1,FileEmpleado)){
+        fwrite(Emp,sizeof (Empleado),1,FileEmp);
+    }
+    fclose(FileEmp);
+    fclose(FileEmpleado);
+    ///VENTAS
+    Venta* Ven = new Venta();
+
+    FILE* FileVenta = fopen("BKP/Ventas.bkp","rb");
+    FILE* FileVen = fopen("Ventas.dat","wb");
+
+    while(fread(Ven,sizeof (Venta),1,FileVenta)){
+        fwrite(Ven,sizeof (Venta),1,FileVen);
+    }
+    fclose(FileVen);
+    fclose(FileVenta);
+    ///USUARIOS
+    Usuario* Usu = new Usuario();
+
+    FILE* FileUsuario = fopen("BKP/Usuarios.bkp","rb");
+    FILE* FileUsu = fopen("Usuarios.dat","wb");
+
+    while(fread(Usu,sizeof (Usuario),1,FileUsuario)){
+        fwrite(Ven,sizeof (Usuario),1,FileUsu);
+    }
+    fclose(FileUsu);
+    fclose(FileUsuario);
 }
 
+void Archivo::listadosVentas(int num){
+
+    int cod;
+    Validacion* validar = new Validacion();
+
+    system("cls");
+    cout<<"INGRESE EL CODIGO A LISTAR"<<endl;
+    cin>>cod;
+    if(validar->regresar(cod))
+        return;
+
+    Venta* venta = new Venta();
+    Imprimir* mostrar = new Imprimir();
+
+    FILE* archivo = fopen ("Ventas.dat","rb");
+
+    if (num == clie){
+        while(fread(venta,sizeof (Venta),1,archivo)){
+
+            if(venta->getCodCli() == cod){
+                mostrar->venta(venta);
+            }
+        }
+    }
+
+    if (num == arti){
+        while(fread(venta,sizeof (Venta),1,archivo)){
+
+            if(venta->getCodigo() == cod){
+
+                ArtXVenta* artxven = new ArtXVenta();
+                FILE* p = fopen("ArtXVentas.dat","rb");
+
+                while(fread(artxven,sizeof (ArtXVenta),1,p)){
+
+                    if(artxven->getCodVent() == cod){
+                        mostrar->artXventa(artxven);
+                    }
+                }
+                fclose(p);
+                system("pause");
+            }
+        }
+    }
+
+    fclose(archivo);
+    system("pause");
+}
+
+void Archivo::editar(int num,void *objeto,int pos){
+    FILE *p;
+
+    switch(num){
+        case arti:{
+            Articulo *art = (Articulo*)objeto;
+            p=fopen("Articulos.dat","rb+");
+            fseek(p,pos * sizeof (Articulo),1);
+            fwrite(art,sizeof (Articulo),1,p);
+            }
+            break;
+
+    }
+
+    fclose(p);
+    return;
+}
+
+int Archivo::buscarPosicion(int num,int codigo){
+    FILE *p;
+    int cont=0;
+
+    switch(num){
+        case arti:{
+            Articulo *art = new Articulo();
+            p=fopen("Articulos.dat","rb");
+            while(fread(art,sizeof (Articulo),1,p)){
+                if(codigo==art->getCodigo()){
+                    fclose(p);
+                    return cont;
+                }
+                cont++;
+            }
+
+        }
+
+    }
+}
 
 #endif // ARCHIVOS_H_INCLUDED

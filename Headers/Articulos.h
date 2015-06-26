@@ -79,9 +79,9 @@ bool Articulo::cargar(){
     while(reintentar){
         cin>>seccion;
         if(validar->regresar(seccion)) return false;
-        if(validar->rango(seccion,1,5)) reintentar = false;
+        if(validar->rango(seccion,0,13)) reintentar = false;
         else{
-            Mostrar->textoRangoInvalido(1,5);
+            Mostrar->textoRangoInvalido(0,13);
             Mostrar->textoCargaArt(codigo,stock,seccion,precio,nombre,3);
         }
     }

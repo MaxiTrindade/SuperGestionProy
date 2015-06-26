@@ -15,17 +15,19 @@ using namespace std;
 #include "Headers/Empleados.h"
 #include "Headers/Clientes.h"
 #include "Headers/Ventas.h"
+#include "Headers/Compras.h"
+#include "Headers/Proveedores.h"
 #include "Headers/Usuarios.h"
 #include "Headers/Archivos.h"
 #include "Headers/Menues.h"
-
+#include "Headers/Informes.h"
 
 int main(){
+
     system("COLOR 1C");
     presentacion();
-    system("COLOR 1C");
     Usuario* User = new Usuario();
-    User=User->login();
+    User = User->login();
     menuPrincipal(User);
     return 0;
 }

@@ -12,7 +12,25 @@ enum Tipo{
     vent,
     usua,
     prom,
-    artXVen
+    artXVen,
+    artXCom
+};
+
+enum TipoArt{
+    almacen,
+    carniceria,
+    verduleria,
+    panaderia,
+    congelados,
+    bebidas,
+    electronica,
+    bazar,
+    jugueteria,
+    sanitarios,
+    libreria,
+    textil,
+    limpieza,
+    construccion
 };
 
 enum estadoVenta{
@@ -46,6 +64,21 @@ class Fecha{
     bool ingresoFecha();
     bool validaFecha(int,int,int);
 };
+
+Fecha fechaSistema(Fecha fechaSys){
+  time_t tiempo;
+  char cad[80];
+  struct tm *tmPtr;
+
+  tiempo = time(NULL);
+  tmPtr = localtime(&tiempo);
+
+  fechaSys.setDia(tmPtr->tm_mday);
+  fechaSys.setMes(tmPtr->tm_mon+1);
+  fechaSys.setAnio(1900+tmPtr->tm_year);
+
+  return fechaSys;
+}
 
 class ArtXVenta{
     private:
@@ -176,12 +209,14 @@ class Archivo{
         int contarRegistros(int);
         bool comprobarRegistro(int,int);
         void* buscarRegistro(int,int);
-        void editarStock(void*,int,int);
-        void editar(int);
+        void editar(int,void*,int);
         void alta();
         void BajaFisica();
         void backup();
         void restaurarCopia();
+        int buscarPosicion(int,int);
+        void listadosVentas(int);
+
 };
 
 class Usuario{
@@ -189,24 +224,94 @@ class Usuario{
     private:
         char nombre[20],clave[20];
         bool estado;
+        char color[9] = "COLOR 0F";
     public:
         char* getNombre();
         char* getClave();
         bool getEstado();
+        char* getColor(){return color;}
         void setNombre(char* nombre);
         void setClave(char* clave);
         void setEstado(bool estado);
+        void setColor(char* color){strcpy(this->color,color);}
         bool cargar();
         Usuario* login();
+        bool cerrarSesion();
         void cambiarClave();
         bool comprobarUsuario(char* nombre);
         bool comprobarClave(char* nombre, char* clave);
         void eliminar();
+        void cambiarColor();
+        char* leerColor();
 };
 
 class Administracion{
     public:
 };
 
+class Informe{
+
+    public:
+        void vectorEnCero(int*,int);
+        void porcArtCargados();
+
+};
+
+class Proveedor{
+    private:
+        char nombre[30],desc[50],telefono[15],email[30],direc[50];
+        int categoria,codigo;
+    public:
+        char* getNombre();
+        char* getDesc();
+        char* getTelefono();
+        char* getEmail();
+        char* getDirec();
+        int getCategoria();
+        int getCodigo();
+        void setNombre(char*);
+        void setDesc(char*);
+        void setTelefono(char*);
+        void setEmail(char*);
+        void setDirec(char*);
+        void setCategoria(int);
+        void setCodigo(int);
+        bool cargar();
+};
+
+class Compra{
+    private:
+        int codigo,codPro;
+        float total;
+        Fecha fechaCompra;
+        bool estado;
+    public:
+        int getCodigo();
+        float getTotal();
+        int getCodPro();
+        Fecha getFechaCompra();
+        bool getEstado();
+        void setCodigo(int);
+        void setCodPro(int);
+        void setTotal(float);
+        void setFechaCompra(int,int,int);
+        void setEstado(bool);
+        int cargar();
+};
+
+class ArtXCompra{
+    private:
+        int codArt,cantidad,codComp;
+        float subTot;
+    public:
+        int getCodArt(){return codArt;}
+        int getCantidad(){return cantidad;}
+        int getCodComp(){return codComp;}
+        float getSubTot(){return subTot;}
+        void setCodArt(int x){this->codArt=x;}
+        void setCantidad(int x){this->cantidad=x;}
+        void setCodComp(int x){this->codComp=x;}
+        void setSubTot(float x){this->subTot=x;}
+};
 
 #endif // SUPER_H_INCLUDED

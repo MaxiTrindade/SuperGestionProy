@@ -1,102 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="Headers\Usuarios.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="Headers\Articulos.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6375" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="3" />
-			<Collapse line="7" />
-			<Collapse line="13" />
-			<Collapse line="17" />
-			<Collapse line="21" />
-			<Collapse line="25" />
-			<Collapse line="29" />
-			<Collapse line="116" />
-			<Collapse line="153" />
-			<Collapse line="166" />
-			<Collapse line="179" />
-			<Collapse line="246" />
-		</Folding>
-	</File>
-	<File name="Headers\Clientes.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="796" topLine="8" />
-		</Cursor>
-		<Folding>
-			<Collapse line="3" />
-			<Collapse line="7" />
-			<Collapse line="11" />
-			<Collapse line="15" />
-			<Collapse line="19" />
-			<Collapse line="23" />
-			<Collapse line="27" />
-			<Collapse line="31" />
-		</Folding>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="424" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="22" />
-		</Folding>
-	</File>
-	<File name="Headers\Empleados.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1136" topLine="17" />
-		</Cursor>
-		<Folding>
-			<Collapse line="31" />
-			<Collapse line="37" />
-		</Folding>
-	</File>
-	<File name="Headers\Imprimir.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5622" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="3" />
-			<Collapse line="6" />
-			<Collapse line="10" />
-			<Collapse line="21" />
-			<Collapse line="32" />
-			<Collapse line="44" />
-			<Collapse line="57" />
-			<Collapse line="63" />
-			<Collapse line="69" />
-			<Collapse line="75" />
-			<Collapse line="81" />
-			<Collapse line="90" />
-			<Collapse line="99" />
-			<Collapse line="108" />
-			<Collapse line="122" />
-		</Folding>
-	</File>
-	<File name="Headers\Validacion.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="742" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="3" />
-			<Collapse line="8" />
-			<Collapse line="13" />
-			<Collapse line="18" />
-			<Collapse line="23" />
-		</Folding>
-	</File>
-	<File name="Headers\Ventas.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1465" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="4" />
-		</Folding>
-	</File>
-	<File name="Headers\Articulos.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="874" topLine="11" />
+			<Cursor1 position="2683" topLine="12" />
 		</Cursor>
 		<Folding>
 			<Collapse line="3" />
@@ -108,63 +15,226 @@
 			<Collapse line="27" />
 			<Collapse line="31" />
 			<Collapse line="35" />
+			<Collapse line="39" />
+			<Collapse line="43" />
+			<Collapse line="47" />
+			<Collapse line="53" />
 		</Folding>
 	</File>
-	<File name="Headers\Super.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="Headers\Clientes.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4597" topLine="7" />
-		</Cursor>
-		<Folding>
-			<Collapse line="5" />
-			<Collapse line="17" />
-			<Collapse line="23" />
-			<Collapse line="34" />
-			<Collapse line="49" />
-			<Collapse line="64" />
-			<Collapse line="87" />
-			<Collapse line="114" />
-			<Collapse line="136" />
-			<Collapse line="168" />
-			<Collapse line="186" />
-			<Collapse line="206" />
-		</Folding>
-	</File>
-	<File name="Headers\Menues.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="11564" topLine="43" />
-		</Cursor>
-		<Folding>
-			<Collapse line="10" />
-			<Collapse line="31" />
-			<Collapse line="82" />
-			<Collapse line="122" />
-			<Collapse line="162" />
-			<Collapse line="206" />
-			<Collapse line="252" />
-		</Folding>
-	</File>
-	<File name="Headers\Archivos.h" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="21411" topLine="26" />
+			<Cursor1 position="796" topLine="10" />
 		</Cursor>
 		<Folding>
 			<Collapse line="3" />
-			<Collapse line="85" />
-			<Collapse line="160" />
-			<Collapse line="258" />
-			<Collapse line="322" />
-			<Collapse line="339" />
-			<Collapse line="394" />
-			<Collapse line="448" />
-			<Collapse line="475" />
-			<Collapse line="530" />
-			<Collapse line="596" />
-			<Collapse line="634" />
+			<Collapse line="7" />
+			<Collapse line="11" />
+			<Collapse line="15" />
+			<Collapse line="19" />
+			<Collapse line="23" />
+			<Collapse line="27" />
+			<Collapse line="31" />
+			<Collapse line="35" />
+			<Collapse line="39" />
+			<Collapse line="43" />
+			<Collapse line="47" />
+			<Collapse line="51" />
 		</Folding>
 	</File>
-	<File name="Headers\Fecha.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="Headers\Imprimir.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7808" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="6" />
+			<Collapse line="10" />
+			<Collapse line="21" />
+			<Collapse line="32" />
+			<Collapse line="44" />
+			<Collapse line="57" />
+			<Collapse line="70" />
+			<Collapse line="76" />
+			<Collapse line="82" />
+			<Collapse line="88" />
+			<Collapse line="94" />
+			<Collapse line="103" />
+			<Collapse line="112" />
+			<Collapse line="121" />
+			<Collapse line="135" />
+			<Collapse line="140" />
+			<Collapse line="151" />
+			<Collapse line="162" />
+			<Collapse line="167" />
+			<Collapse line="175" />
+		</Folding>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="736" topLine="12" />
+		</Cursor>
+	</File>
+	<File name="Headers\Proveedores.h" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1304" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="7" />
+			<Collapse line="11" />
+			<Collapse line="15" />
+			<Collapse line="19" />
+			<Collapse line="23" />
+			<Collapse line="27" />
+			<Collapse line="31" />
+			<Collapse line="35" />
+			<Collapse line="39" />
+			<Collapse line="43" />
+			<Collapse line="47" />
+			<Collapse line="51" />
+			<Collapse line="55" />
+			<Collapse line="59" />
+		</Folding>
+	</File>
+	<File name="Headers\Fecha.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="52" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="10" />
+			<Collapse line="34" />
+		</Folding>
+	</File>
+	<File name="Headers\Archivos.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4593" topLine="70" />
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="372" />
+			<Collapse line="427" />
+			<Collapse line="481" />
+			<Collapse line="547" />
+			<Collapse line="690" />
+			<Collapse line="763" />
+			<Collapse line="833" />
+			<Collapse line="882" />
+			<Collapse line="900" />
+		</Folding>
+	</File>
+	<File name="Headers\Compras.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="299" topLine="5" />
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="7" />
+			<Collapse line="11" />
+			<Collapse line="15" />
+			<Collapse line="19" />
+			<Collapse line="23" />
+			<Collapse line="27" />
+			<Collapse line="31" />
+			<Collapse line="35" />
+			<Collapse line="39" />
+			<Collapse line="45" />
+		</Folding>
+	</File>
+	<File name="Headers\Informes.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="8" />
+		</Folding>
+	</File>
+	<File name="Headers\Empleados.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3540" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="31" />
+			<Collapse line="37" />
+			<Collapse line="46" />
+		</Folding>
+	</File>
+	<File name="Headers\Super.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5566" topLine="29" />
+		</Cursor>
+		<Folding>
+			<Collapse line="5" />
+			<Collapse line="18" />
+			<Collapse line="35" />
+			<Collapse line="41" />
+			<Collapse line="52" />
+			<Collapse line="67" />
+			<Collapse line="82" />
+			<Collapse line="97" />
+			<Collapse line="120" />
+			<Collapse line="147" />
+			<Collapse line="169" />
+			<Collapse line="201" />
+			<Collapse line="247" />
+			<Collapse line="251" />
+			<Collapse line="259" />
+			<Collapse line="281" />
+			<Collapse line="301" />
+		</Folding>
+	</File>
+	<File name="Headers\Menues.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1379" topLine="8" />
+		</Cursor>
+		<Folding>
+			<Collapse line="34" />
+			<Collapse line="97" />
+			<Collapse line="150" />
+			<Collapse line="201" />
+			<Collapse line="257" />
+			<Collapse line="316" />
+			<Collapse line="355" />
+			<Collapse line="408" />
+			<Collapse line="460" />
+			<Collapse line="509" />
+		</Folding>
+	</File>
+	<File name="Headers\Usuarios.h" open="1" top="1" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1236" topLine="33" />
+		</Cursor>
+		<Folding>
+			<Collapse line="7" />
+			<Collapse line="13" />
+			<Collapse line="17" />
+			<Collapse line="21" />
+			<Collapse line="25" />
+			<Collapse line="101" />
+			<Collapse line="115" />
+			<Collapse line="152" />
+			<Collapse line="165" />
+			<Collapse line="178" />
+			<Collapse line="245" />
+			<Collapse line="281" />
+			<Collapse line="371" />
+		</Folding>
+	</File>
+	<File name="Headers\Validacion.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="237" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="8" />
+			<Collapse line="13" />
+			<Collapse line="18" />
+			<Collapse line="23" />
+			<Collapse line="28" />
+		</Folding>
+	</File>
+	<File name="Headers\Ventas.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="54" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

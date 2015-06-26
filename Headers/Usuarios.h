@@ -48,69 +48,68 @@ Usuario* Usuario::login(){
     while(Aux == 0){
 
         system("cls");
-
-        cout<<"\n Si ingresa -1, puede utilizar el programa como usuario invitado." << endl;
-
-        cout<<"\n "<<(char)201; for(int i=0;i<30;i++) cout<<(char)205; cout<<(char)187;
-        cout<<"\n "<<(char)186; for(int i=0;i<30;i++) cout<<" "; cout<<(char)186;
-        cout<<"\n "<<(char)186; for(int i=0;i<3;i++) cout<<" ";cout<<"USUARIO:";for(int i=0;i<19;i++) cout<<" " ;cout<<(char)186;
-        cout<<"\n "<<(char)186; for(int i=0;i<30;i++) cout<<" "; cout<<(char)186;
-        cout<<"\n "<<(char)186; for(int i=0;i<3;i++) cout<<" ";cout<<"CLAVE:";for(int i=0;i<21;i++) cout<<" " ;cout<<(char)186;
-        cout<<"\n "<<(char)186; for(int i=0;i<30;i++) cout<<" "; cout<<(char)186;
-        cout<<"\n "<<(char)200; for(int i=0;i<30;i++) cout<<(char)205; cout<<(char)188;
-        gotoxy(14,5);
+        gotoxy(34,7);
+        cout<<endl<<setw(22)<<(char)201; for(int i=0;i<30;i++) cout<<(char)205; cout<<(char)187;
+        cout<<endl<<setw(22)<<(char)186; for(int i=0;i<30;i++) cout<<" "; cout<<(char)186;
+        cout<<endl<<setw(22)<<(char)186; for(int i=0;i<3;i++) cout<<" ";cout<<"USUARIO:";for(int i=0;i<19;i++) cout<<" " ;cout<<(char)186;
+        cout<<endl<<setw(22)<<(char)186; for(int i=0;i<30;i++) cout<<" "; cout<<(char)186;
+        cout<<endl<<setw(22)<<(char)186; for(int i=0;i<3;i++) cout<<" ";cout<<"CLAVE:";for(int i=0;i<21;i++) cout<<" " ;cout<<(char)186;
+        cout<<endl<<setw(22)<<(char)186; for(int i=0;i<30;i++) cout<<" "; cout<<(char)186;
+        cout<<endl<<setw(22)<<(char)200; for(int i=0;i<30;i++) cout<<(char)205; cout<<(char)188;
+        gotoxy(34,10);
 
         cin>>nombre;
 
-        if (strcmp(nombre,"-1") == 0){
-            gotoxy(0,11);
-            cout <<"\n Ha ingresado como usuario invitado." << endl << endl;
-            strcpy(nombre,"INVITADO");
-            system("pause");
-            Usu->setNombre(nombre);
-            Usu->setClave(clave);
-            Usu->setEstado(false);
-            return Usu;
-        }
-        else{
-            FILE* FileUser = fopen ("Usuarios.dat","rb");
+        FILE* FileUser = fopen ("Usuarios.dat","rb");
 
-            while(fread(User,sizeof (Usuario),1,FileUser)){
+        while(fread(User,sizeof (Usuario),1,FileUser)){
 
-                if(strcmp(User->getNombre(),nombre) ==0 && User->getEstado() == true){
+            if(strcmp(User->getNombre(),nombre) ==0 && User->getEstado() == true){
 
-                    Aux = 1;
+                Aux = 1;
 
-                    gotoxy(12,7);
-                    cin >> clave;
+                gotoxy(32,12);
+                cin >> clave;
 
-                    if(strcmp(User->getClave(),clave) ==0){
-                        gotoxy(0,11);
-                        cout <<"\n Ha ingresado correctamente! " << endl << endl;
-                        system("pause");
-                        fclose(FileUser);
-                        Usu->setNombre(nombre);
-                        Usu->setClave(clave);
-                        Usu->setEstado(true);
-                        return Usu;
-                    }
-                    else{
-                        gotoxy(0,11);
-                        cout<<"\n La clave ingresada es incorrecta! " << endl << endl;
-                        system("pause");
-                    }
+                if(strcmp(User->getClave(),clave) ==0){
+                    fclose(FileUser);
+                    Usu->setNombre(nombre);
+                    Usu->setClave(clave);
+                    Usu->setEstado(true);
+                    Usu->setColor(User->leerColor());
+                    system(User->getColor());
+                    return Usu;
+                }
+                else{
+                    gotoxy(20,16);
+                    cout<<"La clave ingresada es incorrecta.";
+                    gotoxy(22,18); system("pause");
                 }
             }
-            if (Aux == 0){
-                gotoxy(0,11);
-                cout<<"\n No es un nombre de usuario valido." << endl << endl;
-                system("pause");
-            }
-
-            Aux = 0;
-
-            fclose(FileUser);
         }
+        if (Aux == 0){
+            gotoxy(20,16);
+            cout<<"No es un nombre de usuario valido.";
+            gotoxy(22,18); system("pause");
+        }
+
+        Aux = 0;
+
+        fclose(FileUser);
+    }
+}
+
+bool cerrarSesion(){
+    system("cls");
+    Usuario* user = new Usuario();
+    cout<<"\n Confirma que desea cerrar la sesion?\n\n SI (S) - NO (OTRO)\n\n ";
+    char opcion = (char)getch();
+    switch (opcion){
+        case 'S': case 's':
+            cout<<"\n Se ha cerrado la sesion\n\n ";
+            system("pause");
+            return true;
+        default: return false;
     }
 }
 
@@ -255,6 +254,12 @@ void Usuario::eliminar(){
     cout<<"\n Ingrese el nombre del usuario a eliminar: ";
     cin >> nombre;
 
+    if(strcmp(nombre,"UTN")==0){
+        system("cls");
+        cout<<"\n\n No se puede eliminar al usuario 'UTN' (Predeterminado)\n\n ";
+        system("pause"); return;
+    }
+
     if(Validar->regresar(nombre))
         return;
 
@@ -268,10 +273,108 @@ void Usuario::eliminar(){
             fseek(archivo,-sizeof (Usuario),1);
             fwrite(user,sizeof (Usuario),1,archivo);
             fclose(archivo);
-            cout<<"/n EL REGISTRO HA SIDO ELIMINADO SATISFACTORIAMENTE! "<<endl;
+            cout<<"\n EL REGISTRO HA SIDO ELIMINADO SATISFACTORIAMENTE! "<<endl;
             system("pause");
         }
     }
+}
+
+void Usuario::cambiarColor(){
+    char color[9] = "COLOR ";
+    bool flag=true;
+    char opc;
+
+    while(flag){
+        system(color);
+        strcpy(color,"COLOR ");
+        system("cls");
+        cout<<"COLORES DE FONDO"<<endl<<endl;
+        cout<<"0---NEGRO"<<endl;
+        cout<<"1---AZUL"<<endl;
+        cout<<"2---VERDE"<<endl;
+        cout<<"3---AGUAMARINA"<<endl;
+        cout<<"4---ROJO"<<endl;
+        cout<<"5---PURPURA"<<endl;
+        cout<<"6---AMARILLO"<<endl;
+        cout<<"7---BLANCO"<<endl;
+        cout<<"8---GRIS"<<endl;
+        cout<<"9---AZUL CLARO"<<endl<<endl;
+        cout<<"OTRO---SALIR"<<endl<<endl;
+        cout<<"OPCION: ";
+        opc=getch();
+
+        switch(opc){
+            case '0':   strcat(color,"0");
+                        break;
+            case '1':   strcat(color,"1");
+                        break;
+            case '2':   strcat(color,"2");
+                        break;
+            case '3':   strcat(color,"3");
+                        break;
+            case '4':   strcat(color,"4");
+                        break;
+            case '5':   strcat(color,"5");
+                        break;
+            case '6':   strcat(color,"6");
+                        break;
+            case '7':   strcat(color,"7");
+                        break;
+            case '8':   strcat(color,"8");
+                        break;
+            case '9':   strcat(color,"9");
+                        break;
+            default:
+                return;
+        }
+        system("CLS");
+        cout<<"COLORES DE TEXTO"<<endl<<endl;
+        cout<<"A---Verde claro"<<endl;
+        cout<<"B = Aguamarina claro"<<endl;
+        cout<<"C = Rojo claro"<<endl;
+        cout<<"D = Purpura claro"<<endl;
+        cout<<"E = Amarillo claro"<<endl;
+        cout<<"F = Blanco brillante"<<endl<<endl;
+        cout<<"OTRO = SALIR"<<endl<<endl;
+        cout<<"OPCION: ";
+        opc=getch();
+        switch(opc){
+            case 'a': case 'A':  strcat(color,"A");
+                break;
+            case 'b': case 'B':  strcat(color,"B");
+                break;
+            case 'c': case 'C':  strcat(color,"C");
+                break;
+            case 'd': case 'D':  strcat(color,"D");
+                break;
+            case 'e': case 'E':  strcat(color,"E");
+                break;
+            case 'f': case 'F':  strcat(color,"F");
+                break;
+            default:
+                return;
+        }
+        system("CLS");
+        setColor(color);
+
+        FILE* archivo = fopen("Usuarios.dat","rb+");
+        Usuario* user = new Usuario();
+        while(fread(user,sizeof(Usuario),1,archivo))
+            if(strcmp(user->nombre,this->nombre) == 0){
+                fseek(archivo,-sizeof(Usuario),1);
+                fwrite(this,sizeof(Usuario),1,archivo);
+                fclose(archivo);
+            }
+
+    }
+}
+
+char* Usuario::leerColor(){
+    Usuario user;
+    FILE* archivo = fopen("Usuarios.dat","rb");
+    while(fread(&user,sizeof (Usuario),1,archivo))
+        if(strcmp(user.getNombre(),this->getNombre())== 0)
+           return (user.color);
 }
 
 #endif // USUARIOS_H_INCLUDED
