@@ -11,6 +11,7 @@ using namespace std;
 #include "Headers/Imprimir.h"
 #include "Headers/Validacion.h"
 #include "Headers/Fecha.h"
+#include "Headers/Promociones.h"
 #include "Headers/Articulos.h"
 #include "Headers/Empleados.h"
 #include "Headers/Clientes.h"

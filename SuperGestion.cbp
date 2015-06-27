@@ -41,6 +41,7 @@
 		<Unit filename="Headers/Imprimir.h" />
 		<Unit filename="Headers/Informes.h" />
 		<Unit filename="Headers/Menues.h" />
+		<Unit filename="Headers/Promociones.h" />
 		<Unit filename="Headers/Proveedores.h" />
 		<Unit filename="Headers/Super.h" />
 		<Unit filename="Headers/Usuarios.h" />

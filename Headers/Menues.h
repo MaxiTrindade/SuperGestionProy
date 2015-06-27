@@ -10,6 +10,7 @@ void menuAdministracion(Usuario*);
 void menuInformes();
 void menuCompra();
 void menuProveedores();
+void menuPromociones();
 
 void presentacion(){
     cout<<"\n\n";
@@ -76,7 +77,7 @@ void menuPrincipal(Usuario* User){
                 break;
             case 'D': case 'd':   menuVenta();
                 break;
-            case 'E': case 'e':
+            case 'E': case 'e':   menuPromociones();
                 break;
             case 'F': case 'f':   menuCompra();
                 break;
@@ -322,18 +323,30 @@ void menuCompra(){
     Archivo* archivo = new Archivo();
 
     while(opc!='0'){
+
         system("CLS");
-        cout<<"---------------------"<<endl;
-        cout<<"MENU COMPRA"<<endl;
-        cout<<"---------------------"<<endl;
-        cout<<"1) CARGAR COMPRA"<<endl;
-        cout<<"2) MOSTRAR TODAS LAS COMPRAS EFECTUADAS"<<endl;
-        cout<<"3) MOSTRAR LAS COMPRAS MAL INGRESADAS"<<endl;
-        cout<<"4) MOSTRAR POR CODIGO"<<endl;
-        cout<<"---------------------"<<endl;
-        cout<<"0) SALIR"<<endl;
-        cout<<"OPCION: ";
+        cout<<"\n"<<setw(52)<<"S U P E R - G E S T I O N  "<<(char)5<<setw(30);
+        cout<<setw(53);for(int i=0;i<25;i++) cout<<(char)223; cout<<endl;
+        cout<<ends<<(char)201; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)187<<endl;
+        cout<<ends<<(char)186<<setw(42)<<"MENU VENTAS"<<setw(34)<<(char)186<<endl;
+
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(44)<<"1- CARGAR COMPRA"<<setw(32)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(50)<<"2- MOSTRAR TODAS LAS COMPRAS"<<setw(26)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(51)<<"3- MOSTRAR COMPRAS INCORRECTAS"<<setw(25)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(46)<<"4- MOSTRAR POR CODIGO"<<setw(30)<<(char)186<<endl;
+        cout<<ends<<(char)186<<setw(76)<<(char)186<<endl;
+        cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;
+        cout<<ends<<(char)186<<setw(40)<<"0- SALIR"<<setw(36)<<(char)186<<endl;
+        cout<<ends<<(char)200; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)188<<endl;
+
+        cout<<endl<<setw(42)<<"OPCION: ";
         opc=getch();
+
         switch(opc){
             case '1': estado = compra->cargar();
                     if(estado == 0 or estado == 1){
@@ -343,7 +356,7 @@ void menuCompra(){
             case '2': archivo->listarTodos(comp);
                 break;
             case '3':
-            case '4': //archivo->listarXCodigo(vent);
+            case '4': //archivo->listarXCodigo(comp);
                 break;
             case '0':
                 break;
@@ -436,6 +449,9 @@ Usuario* menuUsuarios(Usuario* User){
         cout<<ends<<(char)200; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)188<<endl;
 
         cout<<endl<<setw(42)<<"OPCION: ";
+
+        Usuario* Usu = new Usuario();
+
         opc=getch();
         switch(opc){
             case '1': if(Usu->cargar())
@@ -451,9 +467,12 @@ Usuario* menuUsuarios(Usuario* User){
                 break;
             case '0': return User;
                 break;
-            default:
+
+            case 'S': case 's': return User;
+            default: cout << "\n La opcion ingresada es incorrecta. \n\n ";
+                system("pause");
                 break;
-        }
+            }
     }
     return User;
 }
@@ -549,6 +568,59 @@ void menuInformes(){
     }
 }
 
+void menuPromociones(){
+
+    Promocion* promo = new Promocion();
+    Archivo* archi = new Archivo();
+    char opc='1';
+
+    while(opc!='0'){
+        system("CLS");
+        cout<<"---------------------"<<endl;
+        cout<<"MENU PROMOCIONES"<<endl;
+        cout<<"---------------------"<<endl;
+        cout<<"1) AGREGAR PROMOCION NXM"<<endl;
+        cout<<"2) AGREGAR PROMOCION PORCENTAJE X CATEGORIA ART"<<endl;
+        cout<<"3) AGREGAR PROMOCION A UN ARTICULO EN PARTICULAR"<<endl;
+        cout<<"4) ELIMINAR PROMOCION"<<endl;
+        cout<<"5) LISTAR PROMOCIONES"<<endl;
+        cout<<"6) LISTAR PROMOCIONES X CODIGO"<<endl;
+        cout<<"---------------------"<<endl;
+        cout<<"0) SALIR"<<endl;
+        cout<<"OPCION: ";
+        opc=getch();
+        system("CLS");
+        switch(opc){
+            case '1':
+                if(promo->cargarNXM()){
+                    archi->guardar(promo,prom);
+                }
+                break;
+            case '2':
+                if(promo->cargarPorcentaje()){
+                    archi->guardar(promo,prom);
+                }
+                break;
+            case '3':
+                if(promo->cargarArticulo()){
+                    archi->guardar(promo,prom);
+                }
+                break;
+            case '4': archi->eliminar(prom);
+                break;
+            case '5': archi->listarTodos(prom);
+                break;
+            case '6': archi->listarXCodigo(prom);
+                break;
+            case '0':
+                break;
+            default:
+                break;
+        }
+    }
+    cout<<(float)promo->getDesc() << endl;
+    system("pause");
+}
 
 
 #endif // MENUES_H_INCLUDED

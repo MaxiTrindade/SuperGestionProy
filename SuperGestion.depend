@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1435084157 source:c:\users\maximiliano\documents\github\supergestionproy\main.cpp
+1435356001 source:c:\users\maximiliano\documents\github\supergestionproy\main.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -23,21 +23,21 @@
 	"Headers/Menues.h"
 	"Headers/Informes.h"
 
-1434471517 c:\users\maximiliano\documents\github\supergestionproy\headers\articulos.h
+1435356001 c:\users\maximiliano\documents\github\supergestionproy\headers\articulos.h
 
 1433983445 c:\users\maximiliano\documents\github\supergestionproy\headers\validacion.h
 
-1434654805 c:\users\maximiliano\documents\github\supergestionproy\headers\imprimir.h
+1435356001 c:\users\maximiliano\documents\github\supergestionproy\headers\imprimir.h
 
 1433901638 c:\users\maximiliano\documents\github\supergestionproy\headers\clientes.h
 
-1434901898 c:\users\maximiliano\documents\github\supergestionproy\headers\menues.h
+1435357135 c:\users\maximiliano\documents\github\supergestionproy\headers\menues.h
 
-1434651225 c:\users\maximiliano\documents\github\supergestionproy\headers\ventas.h
+1435356001 c:\users\maximiliano\documents\github\supergestionproy\headers\ventas.h
 
-1434986686 c:\users\maximiliano\documents\github\supergestionproy\headers\super.h
+1435356001 c:\users\maximiliano\documents\github\supergestionproy\headers\super.h
 
-1434902510 c:\users\maximiliano\documents\github\supergestionproy\headers\archivos.h
+1435356001 c:\users\maximiliano\documents\github\supergestionproy\headers\archivos.h
 
 1434379922 c:\users\maximiliano\documents\github\supergestionproy\headers\fecha.h
 
@@ -79,7 +79,7 @@
 
 1434375763 c:\users\maximiliano\documents\github\supergestionproy\headers\empleados.h
 
-1434246562 source:c:\users\ramiro\desktop\supergestionproy\main.cpp
+1435434940 source:c:\users\ramiro\desktop\supergestionproy\main.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -92,45 +92,57 @@
 	"Headers/Imprimir.h"
 	"Headers/Validacion.h"
 	"Headers/Fecha.h"
+	"Headers/Promociones.h"
 	"Headers/Articulos.h"
 	"Headers/Empleados.h"
 	"Headers/Clientes.h"
 	"Headers/Ventas.h"
+	"Headers/Compras.h"
+	"Headers/Proveedores.h"
 	"Headers/Usuarios.h"
 	"Headers/Archivos.h"
 	"Headers/Menues.h"
+	"Headers/Informes.h"
 
-1434246554 c:\users\ramiro\desktop\supergestionproy\headers\super.h
+1435440309 c:\users\ramiro\desktop\supergestionproy\headers\super.h
 
-1434225538 c:\users\ramiro\desktop\supergestionproy\headers\imprimir.h
+1435440280 c:\users\ramiro\desktop\supergestionproy\headers\imprimir.h
 
-1434216124 c:\users\ramiro\desktop\supergestionproy\headers\validacion.h
+1433983445 c:\users\ramiro\desktop\supergestionproy\headers\validacion.h
 
-1434216124 c:\users\ramiro\desktop\supergestionproy\headers\fecha.h
+1435437121 c:\users\ramiro\desktop\supergestionproy\headers\fecha.h
 
-1434216124 c:\users\ramiro\desktop\supergestionproy\headers\articulos.h
+1435356001 c:\users\ramiro\desktop\supergestionproy\headers\articulos.h
 
-1434229995 c:\users\ramiro\desktop\supergestionproy\headers\empleados.h
+1434375763 c:\users\ramiro\desktop\supergestionproy\headers\empleados.h
 
-1434216124 c:\users\ramiro\desktop\supergestionproy\headers\clientes.h
+1433901638 c:\users\ramiro\desktop\supergestionproy\headers\clientes.h
 
-1434216124 c:\users\ramiro\desktop\supergestionproy\headers\ventas.h
+1435432941 c:\users\ramiro\desktop\supergestionproy\headers\ventas.h
 
-1434246720 c:\users\ramiro\desktop\supergestionproy\headers\archivos.h
+1435439290 c:\users\ramiro\desktop\supergestionproy\headers\archivos.h
 
-1434246604 c:\users\ramiro\desktop\supergestionproy\headers\menues.h
+1435440326 c:\users\ramiro\desktop\supergestionproy\headers\menues.h
 
 1433901970 c:\users\backup_labs\desktop\supergestionproy\headers\empleados.h
 
-1434228558 c:\users\ramiro\desktop\supergestionproy\headers\usuarios.h
+1435356001 c:\users\ramiro\desktop\supergestionproy\headers\usuarios.h
 
 1434244468 c:\users\ramiro\desktop\supergestionproy\headers\administracion.h
 
-1435084302 c:\users\maximiliano\documents\github\supergestionproy\headers\usuarios.h
+1435356001 c:\users\maximiliano\documents\github\supergestionproy\headers\usuarios.h
 
-1434570602 c:\users\maximiliano\documents\github\supergestionproy\headers\informes.h
+1435356001 c:\users\maximiliano\documents\github\supergestionproy\headers\informes.h
 
-1434898893 c:\users\maximiliano\documents\github\supergestionproy\headers\compras.h
+1435356001 c:\users\maximiliano\documents\github\supergestionproy\headers\compras.h
 
-1434650265 c:\users\maximiliano\documents\github\supergestionproy\headers\proveedores.h
+1435356001 c:\users\maximiliano\documents\github\supergestionproy\headers\proveedores.h
+
+1435432941 c:\users\ramiro\desktop\supergestionproy\headers\compras.h
+
+1435356001 c:\users\ramiro\desktop\supergestionproy\headers\proveedores.h
+
+1435356001 c:\users\ramiro\desktop\supergestionproy\headers\informes.h
+
+1435440309 c:\users\ramiro\desktop\supergestionproy\headers\promociones.h
 

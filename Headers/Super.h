@@ -100,12 +100,13 @@ class Venta{
         int formaPago,codigo,codEmp,codCli;
         float total;
         bool estado;
-       // Fecha fechaVenta;
+        Fecha fechaVenta;
     public:
         int getCodigo(){return codigo;}
         int getCodEmp(){return codEmp;}
         int getCodCli(){return codCli;}
         int getFormaPago(){return formaPago;}
+        Fecha getFecha(){return fechaVenta;}
         float getTotal(){return total;}
         bool getEstado(){return estado;}
         void setCodigo(int codigo){this->codigo=codigo;}
@@ -114,7 +115,8 @@ class Venta{
         void setFormaPago(int formaPago){this->formaPago=formaPago;}
         void setTotal(int total){this->total=total;}
         void setEstado(bool estado){this->estado=estado;}
-        int cargar();
+        void setFecha(Fecha fecha){this->fechaVenta=fecha;}
+        bool cargar();
 
 };
 
@@ -312,6 +314,45 @@ class ArtXCompra{
         void setCantidad(int x){this->cantidad=x;}
         void setCodComp(int x){this->codComp=x;}
         void setSubTot(float x){this->subTot=x;}
+};
+
+class Promocion{
+    private:
+        int n, m,cat,cod,codArt;
+        float desc;
+        bool estado;
+        Fecha inicio,fin;
+    public:
+        void setCodigo(int cod){this->cod=cod;}
+        void setN(int n){this->n=n;}
+        void setM(int m){this->m=m;}
+        void setDesc(float desc){this->desc=desc;}
+        void setEstado(bool estado){this->estado=estado;}
+        void setFechaInicio(Fecha inicio){
+            this->inicio.setDia(inicio.getDia());
+            this->inicio.setMes(inicio.getMes());
+            this->inicio.setAnio(inicio.getAnio());
+        }
+
+        void setFechaFin(Fecha fin){
+            this->fin.setDia(fin.getDia());
+            this->fin.setMes(fin.getMes());
+            this->fin.setAnio(fin.getAnio());
+        }
+        void setCategoria(int cat){this->cat=cat;}
+        void setCodArt(int art){this->codArt=art;}
+        int getCodigo(){return cod;}
+        int getN(){return n;}
+        int getM(){return m;}
+        float getDesc(){return desc;}
+        bool getEstado(){return estado;}
+        Fecha getFechaInicio(){return inicio;}
+        Fecha getFechaFin(){return fin;}
+        int getCategoria(){return cat;}
+        int getCodArt(){return codArt;}
+        bool cargarNXM();
+        bool cargarPorcentaje();
+        bool cargarArticulo();
 };
 
 #endif // SUPER_H_INCLUDED

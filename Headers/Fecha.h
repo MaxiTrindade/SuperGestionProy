@@ -11,6 +11,8 @@ void Fecha::setAnio(int anio){this->anio=anio;}
 bool Fecha::ingresoFecha(){
     int d,m,a;
     Validacion validar;
+    COORD cursor;
+    Imprimir* mostrar = new Imprimir();
 
     while(true){
         cout<<" DIA: ";
@@ -27,6 +29,11 @@ bool Fecha::ingresoFecha(){
             setMes(m);
             setAnio(a);
             return true;
+        }
+        else{
+            system("pause");
+            pedirCoord(cursor);
+            mostrar->limpiarLinea(cursor.X,cursor.Y,5);
         }
     }
     return false;

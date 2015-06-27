@@ -61,15 +61,14 @@ void Archivo::guardar(void* objeto,int num){   //// EN ESTA FUNCION SE HAN COMEN
             fwrite(usuario,sizeof (Usuario),1,archivo);
         }
             break;
-/*
+
         case prom:
         {
-            Promo* promo = (Promo*)objeto;
+            Promocion* promo = (Promocion*)objeto;
             archivo = fopen("Promos.dat","ab");
-            fwrite(promo,sizeof (Promo),1,archivo);
+            fwrite(promo,sizeof (Promocion),1,archivo);
         }
             break;
-            */
 
         case artXVen:
         {
@@ -169,12 +168,25 @@ void Archivo::listarTodos(int num){
             Proveedor* proveedor = new Proveedor();
             archivo = fopen("Proveedores.dat","rb");
             while(fread(proveedor,sizeof (Proveedor),1,archivo)){
+
                     mostrar->proveedor(proveedor);
             }
             system("pause");
         }
             break;
 
+        case prom:{
+            Promocion* promo = new Promocion();
+            archivo = fopen("Promos.dat","rb");
+            while(fread(promo,sizeof (Promocion),1,archivo)){
+
+                if(promo->getEstado() == true){
+                    mostrar->promocion(promo);
+                }
+            }
+            system("pause");
+        }
+            break;
     }
     fclose(archivo);
 }
@@ -182,6 +194,7 @@ void Archivo::listarTodos(int num){
 void Archivo::listarXCodigo(int num){
 
     int cod,aux=0;
+    Imprimir* mostrar = new Imprimir();
 
     system("cls");
     cout<<"LISTAR POR CODIGO"<<endl;
@@ -200,11 +213,7 @@ void Archivo::listarXCodigo(int num){
 
                 if(articulo->getCodigo() == cod && articulo->getEstado() == true){
 
-                    cout<<"CODIGO: "<<articulo->getCodigo()<<endl;
-                    cout<<"NOMBRE: "<<articulo->getNombre()<<endl;
-                    cout<<"SECCION: "<<articulo->getSeccion()<<endl;
-                    cout<<"PRECIO: "<<articulo->getPrecio()<<endl;
-                    cout<<"STOCK: "<<articulo->getStock()<<endl<<endl;
+                    mostrar->articulo(articulo);
                     system("pause");
                     aux = -1;
                 }
@@ -217,12 +226,7 @@ void Archivo::listarXCodigo(int num){
             while(fread(cliente,sizeof (Cliente),1,archivo)){
 
                 if(cliente->getCodigo() == cod && cliente->getEstado() == true){
-
-                    cout<<"CODIGO: "<<cliente->getCodigo()<<endl;
-                    cout<<"NOMBRE: "<<cliente->getNombre()<<endl;
-                    cout<<"APELLIDO: "<<cliente->getApellido()<<endl;
-                    cout<<"DIRECCION: "<<cliente->getDire()<<endl;
-                    cout<<"LOCALIDAD: "<<cliente->getLocalidad()<<endl<<endl;
+                    mostrar->cliente(cliente);
                     system("pause");
                     aux = -1;
                 }
@@ -235,11 +239,7 @@ void Archivo::listarXCodigo(int num){
             while(fread(venta,sizeof (Venta),1,archivo)){
 
                 if(venta->getCodigo() == cod){
-                    cout<<"CODIGO: "<<venta->getCodigo()<<endl;
-                    cout<<"CODIGO CLIENTE: "<<venta->getCodCli()<<endl;
-                    cout<<"CODIGO EMPLEADO: "<<venta->getCodEmp()<<endl;
-                    cout<<"FORMA DE PAGO: "<<venta->getFormaPago()<<endl;
-                    cout<<"TOTAL: "<<venta->getTotal()<<endl<<endl;
+                    mostrar->venta(venta);
                     system("pause");
                     aux = -1;
                 }
@@ -254,13 +254,7 @@ void Archivo::listarXCodigo(int num){
             while(fread(empleado,sizeof (Empleado),1,archivo)){
                 if(empleado->getCodigo() == cod && empleado->getEstado() == true){
 
-                    cout<<"CODIGO: "<<empleado->getCodigo()<<endl;
-                    cout<<"NOMBRE: "<<empleado->getNombre()<<endl;
-                    cout<<"APELLIDO: "<<empleado->getApellido()<<endl;
-                    cout<<"FECHA DE NACIMIENTO: "; mostrar->fecha(empleado->getNacimiento());
-                    cout<<"FECHA DE INGRESO: "; mostrar->fecha(empleado->getIngreso());
-                    cout<<"AREA: "<<empleado->getArea()<<endl;
-                    cout<<"SUELDO: "<<empleado->getSueldo()<<endl<<endl;
+                    mostrar->empleado(empleado);
                     system("pause");
                     aux = -1;
                 }
@@ -268,6 +262,18 @@ void Archivo::listarXCodigo(int num){
         }
             break;
 
+        case prom:{
+            Promocion* promo = new Promocion();
+            archivo = fopen("promos.dat","rb");
+            while(fread(promo,sizeof (Promocion),1,archivo)){
+
+                if(promo->getCodigo() == cod && promo->getEstado() == true){
+                    mostrar->promocion(promo);
+                    system("pause");
+                    aux = -1;
+                }
+            }
+        }
     }
 
     if(aux != -1){
@@ -338,6 +344,23 @@ void Archivo::eliminar(int num){
             }
         }
             break;
+
+        case prom:{
+            Promocion* promo = new Promocion();
+            archivo = fopen("Promos.dat","rb+");
+            while(fread(promo,sizeof (Promocion),1,archivo)){
+
+                if(promo->getCodigo() == cod && promo->getEstado() == true){
+                    promo->setEstado(false);
+                    fseek(archivo,-sizeof (Promocion),1);
+                    fwrite(promo,sizeof (Promocion),1,archivo);
+                    fclose(archivo);
+                    cout<<"EL REGISTRO HA SIDO ELIMINADO SATISFACTORIAMENTE! "<<endl;
+                    system("pause");
+                }
+            }
+        }
+            break;
     }
 }
 
@@ -361,6 +384,16 @@ int Archivo::contarRegistros(int num){
             archivo = fopen("Articulos.dat","rb");
             while(fread(articulo,sizeof (Articulo),1,archivo)){
                 if(articulo->getEstado())
+                    contador++;
+            }
+        }
+            break;
+
+        case prom:{
+            Promocion* promo = new Promocion();
+            archivo = fopen("Promos.dat","rb");
+            while(fread(promo,sizeof (Promocion),1,archivo)){
+                if(promo->getEstado())
                     contador++;
             }
         }

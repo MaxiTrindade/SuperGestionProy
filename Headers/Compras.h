@@ -43,14 +43,16 @@ void Compra::setFechaCompra(int d,int m,int a){
     this->fechaCompra.setAnio(a);
 }
 
+
 int Compra::cargar(){
 
+    Imprimir *mostrar = new Imprimir();
     Validacion *validar = new Validacion();
     Articulo *articulo = new Articulo();
     Proveedor *proveedor = new Proveedor();
     Archivo *archivo = new Archivo();
     ArtXCompra *artXcomp = new ArtXCompra();
-
+    COORD cursor;
 
     float total=0,subTot,precio;
     int codigo,codProv,codArt,cantidad,posArt,*vecCant,*vecCod,tamVec,i;
@@ -88,7 +90,10 @@ int Compra::cargar(){
         }
         if(archivo->comprobarRegistro(prov,codProv)) flag=false;
         else {
-            cout<<"ESTE PROVEEDOR NO EXISTE"<<endl<<endl;
+            cout<<"ESTE PROVEEDOR NO EXISTE"<<endl;
+            system("pause");
+            pedirCoord(cursor);
+            mostrar->limpiarLinea(cursor.X,cursor.Y,3);
         }
     }
 
@@ -117,8 +122,12 @@ int Compra::cargar(){
             }
 
             else{
-                if(!archivo->comprobarRegistro(arti,codArt))
-                    cout<<"CODIGO INEXISTENTE"<<endl<<endl;
+                if(!archivo->comprobarRegistro(arti,codArt)){
+                    cout<<endl<<"CODIGO INEXISTENTE"<<endl<<endl;
+                    system("pause");
+                    pedirCoord(cursor);
+                    mostrar->limpiarLinea(cursor.X,cursor.Y,5);
+                }
                 else{
                     articulo=(Articulo*)archivo->buscarRegistro(arti,codArt);
                     if(articulo->getSeccion()==proveedor->getCategoria())
@@ -141,20 +150,34 @@ int Compra::cargar(){
                 flag4=false;
                 estado=false;
             }
-            if(validar->positivo(cantidad)){
+            else if(validar->positivo(cantidad)){
                 //GUARDAMOS LA CANTIDAD EN EL VECTOR. LA POSISION DENTRO DEL ARCHIVO
                 //Y DENTRO DEL VECTOR SON LAS MISMAS
                 posArt=archivo->buscarPosicion(arti,codArt);
                 vecCant[posArt]+=cantidad;
                 vecCod[posArt]=codArt;
-
-                cout<<"PRECIO: ";
-                cin>>precio;
+                while(flag2){
+                    cout<<"PRECIO: ";
+                    cin>>precio;
+                    if(!validar->positivo(precio)){
+                        cout<<endl<<"EL NUMERO DEBE SER POSITIVO"<<endl<<endl;
+                        system("pause");
+                        pedirCoord(cursor);
+                        mostrar->limpiarLinea(cursor.X,cursor.Y,5);
+                    }
+                    else flag2=false;
+                }
                 subTot=precio*cantidad;
                 cout<<"SUBTOTAL: "<<subTot<<endl;
                 total+=subTot;
-                flag2=false;
+                //flag2=false;
             }
+                else{
+                    cout<<endl<<"EL NUMERO DEBE SER POSITIVO"<<endl<<endl;
+                    system("pause");
+                    pedirCoord(cursor);
+                    mostrar->limpiarLinea(cursor.X,cursor.Y,5);
+                }
         }
 
         if(flag3){
@@ -174,6 +197,7 @@ int Compra::cargar(){
                 archivo->editar(arti,articulo,i);
             }
         }
+        flag4=false;
         estado=true;
     }
 
@@ -187,5 +211,4 @@ int Compra::cargar(){
     return 1;
 
 }
-
 #endif // COMPRAS_H_INCLUDED

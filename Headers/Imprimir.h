@@ -1,6 +1,8 @@
 #ifndef IMPRIMIR_H_INCLUDED
 #define IMPRIMIR_H_INCLUDED
 
+void gotoxy(int,int);
+
 class Imprimir{
 
     public:
@@ -171,6 +173,41 @@ class Imprimir{
             cout<<"SUBTOTAL: "<<obj->getSubTot()<<endl<<endl;
             cout<<"---------------------------"<<endl;
         }
+
+        void promocion(Promocion *promo){
+
+            Imprimir* mostrar = new Imprimir();
+
+            cout<<" CODIGO: "<<promo->getCodigo()<<endl;
+            if(promo->getN()!=0){
+                cout<<" N : " <<promo->getN()<<endl;
+                cout<<" M : " <<promo->getM()<<endl;
+            }
+            cout<<" PORCENTAJE DE DESCUENTO: "<<100-(promo->getDesc()*100)<<"%"<<endl;
+            if(promo->getCategoria()!=0)
+                cout<<" CATEGORIA DEL ARTICULO: "<<promo->getCategoria()<<endl;
+            else{
+                cout<<" CODIGO DE ARTICULO: "<<promo->getCodArt()<<endl;
+            }
+            cout<<" FECHA DE INICIO: ";
+            mostrar->fecha(promo->getFechaInicio());
+            cout<<endl<<" FECHA DE FIN: ";
+            mostrar->fecha(promo->getFechaFin());
+            cout<<endl<<"---------------------------"<<endl;
+
+        }
+
+        void limpiarLinea(int x,int y,int cantLineas){
+            int i,j;
+
+            for(i=0;i<cantLineas;i++){//FOR DE CANTIDAD DE LINEAS QUE SE BORRAN
+                gotoxy(x,--y);
+                for(j=0;j<=40;j++) {//FOR DE CANTIDAD DE ESPACIOS QUE SE BORRAN
+                    cout<<" ";
+                }
+            }
+            gotoxy(x,y); //SE REGRESA AL PRINCIPIO DE LA ULTIMA LINEA BORRADA
+        }
 };
 
 void gotoxy(int x,int y){
@@ -180,6 +217,31 @@ void gotoxy(int x,int y){
   dwPos.X = x;
   dwPos.Y= y;
   SetConsoleCursorPosition(hcon,dwPos);
+}
+
+int wherex(){
+  CONSOLE_SCREEN_BUFFER_INFO csbi;
+  if (!GetConsoleScreenBufferInfo(
+         GetStdHandle( STD_OUTPUT_HANDLE ),
+         &csbi
+         ))
+    return -1;
+  return csbi.dwCursorPosition.X;
+}
+
+int wherey(){
+  CONSOLE_SCREEN_BUFFER_INFO csbi;
+  if (!GetConsoleScreenBufferInfo(
+         GetStdHandle( STD_OUTPUT_HANDLE ),
+         &csbi
+         ))
+    return -1;
+  return csbi.dwCursorPosition.Y;
+}
+
+void pedirCoord(COORD &pos){
+    pos.X=wherex();
+    pos.Y=wherey();
 }
 
 #endif // IMPRIMIR_H_INCLUDED
