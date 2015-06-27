@@ -79,5 +79,6 @@ bool Fecha::validaFecha(int a,int m,int d){
     return flag;
 }
 
+Fecha fechaSys = fechaSistema(fechaSys);
 
 #endif // FECHA_H_INCLUDED

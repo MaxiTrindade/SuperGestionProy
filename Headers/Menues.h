@@ -45,7 +45,6 @@ void menuPrincipal(Usuario* User){
         cout<<ends<<(char)201; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)187<<endl;
         cout<<ends<<(char)186<<setw(43)<<"MENU PRINCIPAL"<<setw(22)<<"FECHA: ";
         Imprimir* mostrar = new Imprimir();
-        Fecha fechaSys = fechaSistema(fechaSys);
         mostrar->fecha(fechaSys); cout<<ends<<(char)186<<endl;
 
         cout<<ends<<(char)204; for(int i=0;i<75;i++) cout<<(char)205; cout<<(char)185<<endl;

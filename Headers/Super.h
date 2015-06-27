@@ -227,15 +227,22 @@ class Usuario{
         char nombre[20],clave[20];
         bool estado;
         char color[9] = "COLOR 0F";
+        Fecha registro;
     public:
         char* getNombre();
         char* getClave();
         bool getEstado();
         char* getColor(){return color;}
+        Fecha getFecha(){return registro;}
         void setNombre(char* nombre);
         void setClave(char* clave);
         void setEstado(bool estado);
         void setColor(char* color){strcpy(this->color,color);}
+        void setFecha(Fecha fecha){
+            this->registro.setDia(fecha.getDia());
+            this->registro.setMes(fecha.getMes());
+            this->registro.setAnio(fecha.getAnio());
+        }
         bool cargar();
         Usuario* login();
         bool cerrarSesion();

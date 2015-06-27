@@ -176,5 +176,4 @@ bool Promocion::cargarArticulo(){
     return true;
 }
 
-
 #endif // PROMOCIONES_H_INCLUDED

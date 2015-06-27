@@ -136,7 +136,12 @@ class Imprimir{
         }
 
         void usuario(Usuario *obj){
+
+            Imprimir* mostrar = new Imprimir();
+
             cout<<"NOMBRE: "<<obj->getNombre()<<endl;
+            cout<<"FECHA DE REGISTRO: ";
+            mostrar->fecha(obj->getFecha());
             cout<<"---------------------------"<<endl;
         }
 

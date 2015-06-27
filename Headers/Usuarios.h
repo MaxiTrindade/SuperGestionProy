@@ -40,6 +40,7 @@ Usuario* Usuario::login(){
         Usu->setNombre("UTN");
         Usu->setClave("UTN");
         Usu->setEstado(true);
+        Usu->setFecha(fechaSys);
         fclose(archivo);
         archi->guardar(Usu,usua);
     }
@@ -146,6 +147,7 @@ bool Usuario::cargar(){
     system("pause");
     setNombre(nombre);
     setClave(clave);
+    setFecha(fechaSys);
     setEstado(true);
     return true;
 }

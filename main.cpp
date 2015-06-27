@@ -23,6 +23,7 @@ using namespace std;
 #include "Headers/Menues.h"
 #include "Headers/Informes.h"
 
+
 int main(){
 
     system("COLOR 1C");
