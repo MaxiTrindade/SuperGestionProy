@@ -952,4 +952,36 @@ int Archivo::buscarPosicion(int num,int codigo){
     }
 }
 
+Promocion Archivo::buscarMayor(Articulo* art,Fecha venta){
+
+    float mayor=200;
+
+    FILE* p = fopen("Promos.dat","rb");
+    Promocion promo;
+    Promocion promayor;
+
+    while(fread(&promo,sizeof promo,1,p)){
+
+        if(promo.getEstado() == true){
+
+            if(venta.validaRango(promo.getFechaInicio(),promo.getFechaFin())){
+
+                if(promo.getCategoria() == art->getSeccion() or promo.getCodArt() == art->getCodigo()){
+
+                    if(promo.getDesc() < mayor){
+                        mayor=promo.getDesc();
+                        promayor = promo;
+                    }
+                }
+            }
+        }
+    }
+    if(mayor==200){
+        promayor.setCodigo(0);
+    }
+    fclose(p);
+    system("pause");
+    return promayor;
+}
+
 #endif // ARCHIVOS_H_INCLUDED

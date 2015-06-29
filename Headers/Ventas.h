@@ -9,6 +9,7 @@ bool Venta::cargar(){
     Articulo * art = new Articulo();
     Archivo *archivo = new Archivo();
     Imprimir *mostrar = new Imprimir();
+    Promocion promo;
     COORD cursor;
 
     bool flag=true,flag2=true,flag3=true,flag4,estado;
@@ -123,7 +124,14 @@ bool Venta::cargar(){
                         flag4=false;
                     }
                     else{
-                        sub=cantidad*art->getPrecio();
+                        //sub=cantidad*art->getPrecio();
+                        promo=archivo->buscarMayor(art,fechaVenta);
+                        if(promo.getCodigo()!=0){
+                            sub=promo.calcular(art->getPrecio(),cantidad);
+                        }
+                        else{
+                            sub=cantidad*art->getPrecio();
+                        }
                         total+=sub;
                         cout<<"Total: $"<<total<<endl;
                         vecCant[pos]+=cantidad;
@@ -169,10 +177,6 @@ bool Venta::cargar(){
     free(vecCod);
     free(vecCant);
     return true;
-
-
-
-
 }
 
 #endif // VENTAS_H_INCLUDED

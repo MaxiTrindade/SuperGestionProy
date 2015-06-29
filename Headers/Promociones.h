@@ -176,4 +176,25 @@ bool Promocion::cargarArticulo(){
     return true;
 }
 
+float Promocion::calcular(float precio, int cant){
+
+    float total;
+    int resto,prom;
+
+    if(this->getN()==0 or this->getM()==0){
+        total=precio*cant*this->getDesc();
+        return total;
+    }
+
+    if(cant>=this->getN()){
+        resto=cant%this->getN();
+        prom=cant/this->getN();
+        total=(resto*precio)+(prom*this->getM()*precio);
+        ///        3* $2       +  8x PRECIO x DESC
+    }
+    cout << "EL TOTAL ES: " << total;
+    system("pause");
+    return total;
+}
+
 #endif // PROMOCIONES_H_INCLUDED

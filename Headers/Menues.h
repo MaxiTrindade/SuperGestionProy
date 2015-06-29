@@ -291,10 +291,10 @@ void menuVenta(){
         opc=getch();
         system("CLS");
         switch(opc){
-            case '1': /*estado = venta->cargar();
+            case '1': estado = venta->cargar();
                     if(estado == grabo or estado == bajaLogica){
                         archivo->guardar(venta,vent);
-                    }*/
+                    }
                 break;
             case '2': archivo->listarTodos(vent);
                 break;
@@ -617,8 +617,6 @@ void menuPromociones(){
                 break;
         }
     }
-    cout<<(float)promo->getDesc() << endl;
-    system("pause");
 }
 
 

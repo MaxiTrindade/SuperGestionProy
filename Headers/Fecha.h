@@ -1,6 +1,8 @@
 #ifndef FECHA_H_INCLUDED
 #define FECHA_H_INCLUDED
 
+Fecha fechaSys = fechaSistema(fechaSys);
+
 int Fecha::getDia(){return dia;}
 int Fecha::getMes(){return mes;}
 int Fecha::getAnio(){return anio;}
@@ -79,6 +81,22 @@ bool Fecha::validaFecha(int a,int m,int d){
     return flag;
 }
 
-Fecha fechaSys = fechaSistema(fechaSys);
+
+
+bool Fecha::validaRango(Fecha inicio, Fecha fin){
+
+    if(inicio.anio <= this->anio && fin.anio >= this->anio){
+        if(inicio.mes <= this->mes && fin.mes >= this->mes){
+            if(inicio.dia <= this->dia && fin.dia >= this->dia){
+                return true;
+            }
+        }
+    }
+    else{
+        return false;
+    }
+}
+
+
 
 #endif // FECHA_H_INCLUDED
